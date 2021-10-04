@@ -9,6 +9,10 @@
 \ProvidesExplPackage {ac-resume} {2021/10/04} {0.1}
   {Document class for the resume of advanced courses}
 
+% (u)pTeX 用パッチ
+\sys_if_engine_ptex:T { \RequirePackage { plautopatch } }
+\sys_if_engine_uptex:T { \RequirePackage { plautopatch } }
+
 \clist_new:N \g__acr_options_clist
 \clist_new:N \g__acr_disallowed_options_clist
 \seq_new:N \g__acr_disallowed_options_seq
