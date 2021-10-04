@@ -1,13 +1,13 @@
-%% 視覚情報処理研究室卒業論文クラスファイル
-%% Ver.1.0 <2021-04-16>
+%% 長岡高専専攻科予稿クラスファイル
+%% Ver.0.1 <2021-XX-XX>
 
 % パッケージ
 \RequirePackage{expl3,xparse,l3keys2e}
 
 % クラス宣言
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesExplPackage {atkart} {2021/04/07} {1.0}
-  {Document class for the thesis of Visual Information Processing Research Lab}
+\ProvidesExplPackage {ac-resume} {2021/04/07} {1.0}
+  {Document class for the thesis of XXX}
 
 % (u)pTeX 用パッチ
 \sys_if_engine_ptex:T { \RequirePackage { plautopatch } }
