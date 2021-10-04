@@ -118,6 +118,20 @@
     \end{minipage}
   }
 
+% フォントサイズの設定（jlreq 内部のコマンドを使用している）
+\RenewDocumentCommand\footnote {}
+  { \@setfontsize\footnote{8bp}{\jlreq@baselineskip} }
+\RenewDocumentCommand\small {}
+  { \@setfontsize\small{9bp}{\jlreq@baselineskip} }
+\RenewDocumentCommand\large {}
+  { \@setfontsize\large{10.5bp}{\jlreq@baselineskip} }
+\RenewDocumentCommand\Large {}
+  { \@setfontsize\Large{12bp}{\jlreq@baselineskip} }
+\RenewDocumentCommand\LARGE {}
+  { \@setfontsize\LARGE{14bp}{\jlreq@baselineskip} }
+\RenewDocumentCommand\huge {}
+  { \@setfontsize\huge{16bp}{\jlreq@baselineskip} }
+
 \ModifyHeading { section }
   {
     font={\large\bfseries},
