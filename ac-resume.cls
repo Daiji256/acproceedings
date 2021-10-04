@@ -118,5 +118,25 @@
     \end{minipage}
   }
 
+\ModifyHeading { section }
+  {
+    font={\large\bfseries},
+    align=center,
+    label_format={\thesection .},
+    after_label_space=1\zw
+  }
+\ModifyHeading { subsection }
+  {
+    font={\bfseries},
+    label_format={\thesubsection .},
+    after_label_space=1\zw
+  }
+\ModifyHeading { subsubsection }
+  {
+    font={\bfseries},
+    label_format={\thesubsubsection .},
+    after_label_space=1\zw
+  }
+
 \NewPageStyle { ac-pagestyle } { nombre=\large\@program-\thepage }
 \pagestyle{ac-pagestyle}
