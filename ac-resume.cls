@@ -117,3 +117,6 @@
       {\small\noindent{\bfseries Keywords:~}\@keywords}
     \end{minipage}
   }
+
+\NewPageStyle { ac-pagestyle } { nombre=\large\@program-\thepage }
+\pagestyle{ac-pagestyle}
