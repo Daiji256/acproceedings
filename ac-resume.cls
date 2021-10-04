@@ -13,6 +13,9 @@
 \sys_if_engine_ptex:T { \RequirePackage { plautopatch } }
 \sys_if_engine_uptex:T { \RequirePackage { plautopatch } }
 
+% クラスオプション
+\bool_new:N \g_acr_nogutter_bool
+
 \clist_new:N \g__acr_options_clist
 \clist_new:N \g__acr_disallowed_options_clist
 \seq_new:N \g__acr_disallowed_options_seq
@@ -40,6 +43,15 @@
       { \clist_gput_right:No \g__acr_options_clist { \CurrentOption } }
   }
 
+% オプション実行
+\keys_define:nn { ac-resume / option }
+{
+  nogutter .bool_gset:N = \g_acr_nogutter_bool,
+  nogutter .default:n = true
+}
+\ProcessKeysOptions { ac-resume / option }
+\PassOptionsToClass { \g__acr_options_clist } { jlreq }
+
 % オプションを指定して jlreq を読み込む
 \LoadClass
   [
@@ -49,5 +61,6 @@
     twocolumn,
     column_gap=7.5mm,
     line_length=23zw,
-    number_of_lines=47
+    number_of_lines=47,
+    \bool_if:NF \g_acr_nogutter_bool { gutter=2cm }
   ] { jlreq }
