@@ -41,4 +41,13 @@
   }
 
 % オプションを指定して jlreq を読み込む
-\LoadClass { jlreq }
+\LoadClass
+  [
+    paper=a4,
+    fontsize=10bp,
+    baselineskip=15bp,
+    twocolumn,
+    column_gap=7.5mm,
+    line_length=23zw,
+    number_of_lines=47
+  ] { jlreq }
