@@ -137,20 +137,37 @@
     font={\large\bfseries},
     align=center,
     label_format={\thesection .},
-    after_label_space=1\zw
+    after_label_space=1\zw,
+    lines=1,
+    before_lines=1,
+    after_lines=1
   }
 \ModifyHeading { subsection }
   {
     font={\bfseries},
     label_format={\thesubsection .},
-    after_label_space=1\zw
+    after_label_space=1\zw,
+    lines=1,
+    before_lines=1
   }
 \ModifyHeading { subsubsection }
   {
     font={\bfseries},
     label_format={\thesubsubsection .},
-    after_label_space=1\zw
+    after_label_space=1\zw,
+    lines=1,
+    before_lines=1
   }
+
+% *section が連なった時の処理（expl3 内だと動作しない）
+\ExplSyntaxOff
+\SetBlockHeadingSpaces
+  {
+    {_section{before_lines=1},_subsection{*}}
+    {_subsection{*},_subsubsection{before_lines=0}}
+    {_section{before_lines=1},_subsection{*},_subsubsection{before_lines=0}}
+  }
+\ExplSyntaxOn
 
 \NewPageStyle { ac-pagestyle } { nombre=\large\@program-\thepage }
 \pagestyle{ac-pagestyle}
