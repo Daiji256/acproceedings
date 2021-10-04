@@ -15,6 +15,7 @@
 
 % クラスオプション
 \bool_new:N \g_acr_nogutter_bool
+\bool_new:N \g_acr_japanese_bool
 
 \clist_new:N \g__acr_options_clist
 \clist_new:N \g__acr_disallowed_options_clist
@@ -47,7 +48,9 @@
 \keys_define:nn { ac-resume / option }
 {
   nogutter .bool_gset:N = \g_acr_nogutter_bool,
-  nogutter .default:n = true
+  nogutter .default:n = true,
+  japanese .bool_gset:N = \g_acr_japanese_bool,
+  japanese .default:n = true
 }
 \ProcessKeysOptions { ac-resume / option }
 \PassOptionsToClass { \g__acr_options_clist } { jlreq }
@@ -64,3 +67,17 @@
     number_of_lines=47,
     \bool_if:NF \g_acr_nogutter_bool { gutter=2cm }
   ] { jlreq }
+
+% 英語キャプション対応
+\bool_if:NF \g_acr_japanese_bool
+  {
+    \tl_set:Nn \contentsname { Table~ of~ Contents }
+    \tl_set:Nn \refname { References }
+    \tl_set:Nn \indexname { Index }
+    \tl_set:Nn \listfigurename { List~ of~ Figures }
+    \tl_set:Nn \figurename { Figure }
+    \tl_set:Nn \listtablename { List~ of~ Tables }
+    \tl_set:Nn \tablename { Table }
+    \tl_set:cn { fnum@figure } { \figurename\nobreakspace\thefigure }
+    \tl_set:cn { fnum@table } { \tablename\nobreakspace\thetable }
+  }
