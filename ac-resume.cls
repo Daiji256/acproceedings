@@ -84,36 +84,36 @@
 
 % maketitle の要素の設定
 \NewDocumentCommand\titleJP { m }
-{ \DeclareDocumentCommand\@titleJP {} { #1 } }
+  { \DeclareDocumentCommand\@titleJP {} { #1 } }
 \NewDocumentCommand\titleEN { m }
-{ \DeclareDocumentCommand\@titleEN {} { #1 } }
+  { \DeclareDocumentCommand\@titleEN {} { #1 } }
 \NewDocumentCommand\authorJP { m }
-{ \DeclareDocumentCommand\@authorJP {} { #1 } }
+  { \DeclareDocumentCommand\@authorJP {} { #1 } }
 \NewDocumentCommand\authorEN { m }
-{ \DeclareDocumentCommand\@authorEN {} { #1 } }
+  { \DeclareDocumentCommand\@authorEN {} { #1 } }
 \NewDocumentCommand\major { m }
-{ \DeclareDocumentCommand\@major {} { #1 }}
+  { \DeclareDocumentCommand\@major {} { #1 }}
 \NewDocumentCommand\supervisor { m }
-{ \DeclareDocumentCommand\@supervisor {} { #1 } }
+  { \DeclareDocumentCommand\@supervisor {} { #1 } }
 \RenewDocumentCommand\abstract { +m }
-{ \DeclareDocumentCommand\@abstract {} { #1 } }
+  { \DeclareDocumentCommand\@abstract {} { #1 } }
 \NewDocumentCommand\keywords { m }
-{ \DeclareDocumentCommand\@keywords {} { #1 } }
+  { \DeclareDocumentCommand\@keywords {} { #1 } }
 \NewDocumentCommand\program { m }
-{ \DeclareDocumentCommand\@program {} { #1 } }
+  { \DeclareDocumentCommand\@program {} { #1 } }
 
 % \maketitleの設定（表紙と目次）
 \RenewDocumentCommand\maketitle {} { \twocolumn[\@maketitle] }
 \RenewDocumentCommand\@maketitle {}
-{
-  \centering
-  {\LARGE\bfseries\@titleJP\\}
-  {\Large\@titleEN\\}
-  {\normalsize\@authorJP（\@authorEN）\\}
-  {\normalsize\@major（\@supervisor）\\}
-  \begin{minipage}{150mm}
-    \setlength{\parindent}{1\zw}
-    {\small\@abstract\\}
-    {\small\noindent{\bfseries Keywords:~}\@keywords}
-  \end{minipage}
-}
+  {
+    \centering
+    {\LARGE\bfseries\@titleJP\\}
+    {\Large\@titleEN\\}
+    {\normalsize\@authorJP（\@authorEN）\\}
+    {\normalsize\@major（\@supervisor）\\}
+    \begin{minipage}{150mm}
+      \setlength{\parindent}{1\zw}
+      {\small\@abstract\\}
+      {\small\noindent{\bfseries Keywords:~}\@keywords}
+    \end{minipage}
+  }
