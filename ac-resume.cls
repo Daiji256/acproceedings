@@ -140,3 +140,30 @@
 
 \NewPageStyle { ac-pagestyle } { nombre=\large\@program-\thepage }
 \pagestyle{ac-pagestyle}
+
+% 参考文献（フォントサイズを small に変更）
+\renewenvironment{thebibliography}[1]{%
+  \jlreq@oldfontcommand@enable
+  \section*{\refname}%
+  \@mkboth{\refname}{\refname}%
+  \small
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{#1}}%
+    \labelsep=1\zw
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemindent=0pt
+    \@openbib@code
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty\clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m
+}{%
+  \def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist
+  \jlreq@oldfontcommand@disable
+}
