@@ -46,12 +46,12 @@
 
 % オプション実行
 \keys_define:nn { ac-resume / option }
-{
-  nogutter .bool_gset:N = \g_acr_nogutter_bool,
-  nogutter .default:n = true,
-  japanese .bool_gset:N = \g_acr_japanese_bool,
-  japanese .default:n = true
-}
+  {
+    nogutter .bool_gset:N = \g_acr_nogutter_bool,
+    nogutter .default:n = true,
+    japanese .bool_gset:N = \g_acr_japanese_bool,
+    japanese .default:n = true
+  }
 \ProcessKeysOptions { ac-resume / option }
 \PassOptionsToClass { \g__acr_options_clist } { jlreq }
 
