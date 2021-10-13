@@ -134,6 +134,7 @@
 \RenewDocumentCommand\huge {}
   { \@setfontsize\huge{16bp}{\jlreq@baselineskip} }
 
+% section 等の設定
 \ModifyHeading { section }
   {
     font={\large\bfseries},
@@ -171,6 +172,7 @@
   }
 \ExplSyntaxOn
 
+% ページ番号の設定
 \NewPageStyle { ac-pagestyle } { nombre=\large\g_acr_program_str-\thepage }
 \pagestyle{ac-pagestyle}
 
