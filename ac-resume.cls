@@ -107,14 +107,14 @@
 \RenewDocumentCommand\@maketitle {}
   {
     \centering
-    {\huge\bfseries\@titleJP\\}
-    {\LARGE\bfseries\@titleEN\\}
-    {\Large\bfseries\@authorJP（\@authorEN）\\}
-    {\normalsize\sffamily\@major（\@supervisor）\\}
+    {\huge\bfseries\@titleJP\\[1mm]}
+    {\LARGE\bfseries\@titleEN\\[5mm]}
+    {\Large\bfseries\@authorJP（\@authorEN）\\[5mm]}
+    {\normalsize\sffamily\@major（\@supervisor）\\[7mm]}
     \begin{minipage}{150mm}
       \setlength{\parindent}{1\zw}
-      {\small\@abstract\\}
-      {\small\noindent{\bfseries Keywords:~}\@keywords}
+      {\small\@abstract\\[5mm]}
+      {\small\noindent{\bfseries Keywords:~}\@keywords\\[2mm]}
     \end{minipage}
   }
 
