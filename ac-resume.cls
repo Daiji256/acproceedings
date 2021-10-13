@@ -72,7 +72,6 @@
 \bool_if:NF \g_acr_japanese_bool
   {
     \tl_set:Nn \contentsname { Table~ of~ Contents }
-    \tl_set:Nn \refname { References }
     \tl_set:Nn \indexname { Index }
     \tl_set:Nn \listfigurename { List~ of~ Figures }
     \tl_set:Nn \figurename { Figure }
@@ -81,6 +80,9 @@
     \tl_set:cn { fnum@figure } { \figurename\nobreakspace\thefigure }
     \tl_set:cn { fnum@table } { \tablename\nobreakspace\thetable }
   }
+
+\tl_set:Nn \indexname { 参考文献 }
+\cs_set:Npn \@biblabel #1 { #1) }
 
 % maketitle の要素の設定
 \NewDocumentCommand\titleJP { m }
