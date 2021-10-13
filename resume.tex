@@ -1,21 +1,110 @@
-\documentclass[a4j,fleqn,twocolumn]{ltjsarticle}
-\usepackage{ac-resume}
+% +++
+% latex = "lualatex"
+% +++
 
-\TitleJPN{タイトル}
-\TitleENG{Title}
-\NameJPN{名前}
-\NameENG{Name}
-\Major{専攻}
-\Supervisor{教授}
-\Abstract{%
-	In this study.
+\documentclass[nogutter]{ac-resume}
+%\usepackage[ms]{luatexja-preset}
+%\usepackage[ms]{pxchfon}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{bm}
+\usepackage{siunitx}
+\DeclareSIUnit[number-unit-product=]\percent{\char`\%}
+
+\titleJP{専攻科特別研究テーマ名}
+\titleEN{English Title of ACEM Research Theme}
+\authorJP{専攻 太郎}
+\authorEN{Taro Senkoh}
+\major{〇〇工学専攻}
+\supervisor{長岡 高志 教授，悠久 清花 准教授}
+\abstract{
+	This template is prepared
+	for your preparation of manuscript
+	for Thesis Works Papers.
+	It provides instructions: page layout, font style,
+	size and others.
+	You may use it to create your own manuscript
+	by replacing the relevant text
+	with your own, using ``cut \& paste.''
+
+	The Abstract should be justified.
+	Font should be a 10-point Times-New-Roman.
+	The length should be 200 words or less.
 }
-\KeyWords{key}
-\Program{XXX-XXX}
+\keywords{Times, Italic, 10pt}
+\program{XXX-XXX}
 
 \begin{document}
 \maketitle
 
 \section{はじめに}
+
+専攻科特別研究発表会講演予稿の原稿テンプレートです．
+本書式に従い作成して下さい．
+本文は，上下左右に$\SI{20}{mm}$の余白を設けること．
+2段組（間隔$\SI{7.5}{mm}$）とし，
+文字数23，行数47とすること．
+研究テーマ，氏名，専攻（指導教員名）は，
+MSゴシック，ボールド，中央揃えとする．
+英文タイトル・英文氏名はTimes New Romanのボールド，
+中央揃えとする．
+
+研究テーマは$\SI{16}{pt}$，英文タイトルは$\SI{14}{pt}$，
+氏名は和英とも$\SI{12}{pt}$，専攻（指導教員名）は$\SI{10}{pt}$とする．
+章タイトルは，MSゴシック，ボールド，$\SI{10.5}{pt}$，
+中央揃えとし，前後を1行空ける．
+節タイトルはMSゴシック，ボールド，$\SI{10}{pt}$，左揃えとし，
+タイトル前を1行空ける．
+本文はMS明朝（英数字はTimes New Roman），$\SI{10}{pt}$で記述する．
+
+図表は，図表内およびキャプションを英語とする．
+ページ番号はページの下部・中央に付ける
+（専攻ごとに形式が異なるので専攻科委員の指示に従うこと）．
+
+\section{原稿のページ数}
+
+\subsection{専攻科特別研究発表会講演予稿}
+
+1年生は2ページ，2年生は4または6ページにまとめてください．
+ページの増減は認めません．
+
+\subsection{専攻科特別研究発表会講演予稿の提出}
+
+提出（1，2年生対象）は，
+PDFファイル（ファイル名は\texttt{xxxxxx.pdf}）とし
+各科専攻科委員に提出してください．
+
+\section{原稿の構成}
+
+原稿の基本構成は，
+\begin{enumerate}
+	\item 諸言，緒論，序論，はじめに
+	\item 実験方法，理論など
+	\item 結果及び考察など
+	\item 結言，結論，おわりに，まとめ，むすび\\
+	参考文献，引用文献
+\end{enumerate}
+です．章タイトルは，指導教員と相談して適宜変更して構いません．
+引用文献に章番号は付けません．
+
+\section{まとめ}
+
+原稿は，本書式で示したフォントや余白の指定を守って作成すること．
+
+原稿ページ数は学年によって異なるので，それぞれの指示をよく確認しておくこと．
+
+締切を厳守すること．
+
+\begin{thebibliography}{9}
+	\small
+	\bibitem{cite:1}
+	引用文献は，MS明朝（英数字はTimes New Roman），
+	9pt，ぶら下げインデント3mm，番号を付してリストにする．
+	\bibitem{cite:2}
+	Sigurdson, L.~W.,
+	``The structure and control of a turbulent reattaching flow'',
+	Journal of Fluid Mechanics 298, pp.139-165 (1995).
+\end{thebibliography}
 
 \end{document}
