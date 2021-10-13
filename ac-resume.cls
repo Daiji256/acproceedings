@@ -85,38 +85,38 @@
 \cs_set:Npn \@biblabel #1 { #1) }
 
 % maketitle の要素の設定
-\str_new:N \l_acr_title_jp_str
-\str_new:N \l_acr_title_en_str
-\str_new:N \l_acr_author_jp_str
-\str_new:N \l_acr_author_en_str
-\str_new:N \l_acr_major_str
-\str_new:N \l_acr_supervisor_str
-\str_new:N \l_acr_abstract_str
-\str_new:N \l_acr_keywords_str
-\str_new:N \l_acr_program_str
-\NewDocumentCommand\titleJP    { m }  { \str_set:Nn \l_acr_title_jp_str   { #1 } }
-\NewDocumentCommand\titleEN    { m }  { \str_set:Nn \l_acr_title_en_str   { #1 } }
-\NewDocumentCommand\authorJP   { m }  { \str_set:Nn \l_acr_author_jp_str  { #1 } }
-\NewDocumentCommand\authorEN   { m }  { \str_set:Nn \l_acr_author_en_str  { #1 } }
-\NewDocumentCommand\major      { m }  { \str_set:Nn \l_acr_major_str      { #1 } }
-\NewDocumentCommand\supervisor { m }  { \str_set:Nn \l_acr_supervisor_str { #1 } }
-\RenewDocumentCommand\abstract { +m } { \str_set:Nn \l_acr_abstract_str   { #1 } }
-\NewDocumentCommand\keywords   { m }  { \str_set:Nn \l_acr_keywords_str   { #1 } }
-\NewDocumentCommand\program    { m }  { \str_set:Nn \l_acr_program_str    { #1 } }
+\str_new:N \g_acr_title_jp_str
+\str_new:N \g_acr_title_en_str
+\str_new:N \g_acr_author_jp_str
+\str_new:N \g_acr_author_en_str
+\str_new:N \g_acr_major_str
+\str_new:N \g_acr_supervisor_str
+\str_new:N \g_acr_abstract_str
+\str_new:N \g_acr_keywords_str
+\str_new:N \g_acr_program_str
+\NewDocumentCommand\titleJP    { m }  { \str_set:Nn \g_acr_title_jp_str   { #1 } }
+\NewDocumentCommand\titleEN    { m }  { \str_set:Nn \g_acr_title_en_str   { #1 } }
+\NewDocumentCommand\authorJP   { m }  { \str_set:Nn \g_acr_author_jp_str  { #1 } }
+\NewDocumentCommand\authorEN   { m }  { \str_set:Nn \g_acr_author_en_str  { #1 } }
+\NewDocumentCommand\major      { m }  { \str_set:Nn \g_acr_major_str      { #1 } }
+\NewDocumentCommand\supervisor { m }  { \str_set:Nn \g_acr_supervisor_str { #1 } }
+\RenewDocumentCommand\abstract { +m } { \str_set:Nn \g_acr_abstract_str   { #1 } }
+\NewDocumentCommand\keywords   { m }  { \str_set:Nn \g_acr_keywords_str   { #1 } }
+\NewDocumentCommand\program    { m }  { \str_set:Nn \g_acr_program_str    { #1 } }
 
 % \maketitleの設定（表紙と目次）
 \RenewDocumentCommand\maketitle {} { \twocolumn[\@maketitle] }
 \RenewDocumentCommand\@maketitle {}
   {
     \centering
-    { \huge\bfseries \l_acr_title_jp_str \\[1mm] }
-    { \LARGE\bfseries \l_acr_title_en_str \\[5mm] }
-    { \Large\bfseries \l_acr_author_jp_str（\l_acr_author_en_str） \\[5mm] }
-    { \normalsize\sffamily \l_acr_major_str（\l_acr_supervisor_str） \\[7mm] }
+    { \huge\bfseries \g_acr_title_jp_str \\[1mm] }
+    { \LARGE\bfseries \g_acr_title_en_str \\[5mm] }
+    { \Large\bfseries \g_acr_author_jp_str（\g_acr_author_en_str） \\[5mm] }
+    { \normalsize\sffamily \g_acr_major_str（\g_acr_supervisor_str） \\[7mm] }
     \begin{minipage}{150mm}
       \setlength{\parindent}{1\zw}
-      { \small \l_acr_abstract_str \\[5mm]}
-      { \small \noindent { \bfseries Keywords:~ } \l_acr_keywords_str \\[2mm] }
+      { \small \g_acr_abstract_str \\[5mm]}
+      { \small \noindent { \bfseries Keywords:~ } \g_acr_keywords_str \\[2mm] }
     \end{minipage}
   }
 
@@ -171,7 +171,7 @@
   }
 \ExplSyntaxOn
 
-\NewPageStyle { ac-pagestyle } { nombre=\large\l_acr_program_str-\thepage }
+\NewPageStyle { ac-pagestyle } { nombre=\large\g_acr_program_str-\thepage }
 \pagestyle{ac-pagestyle}
 
 % 参考文献（フォントサイズを small に変更）
