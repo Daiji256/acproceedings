@@ -120,6 +120,71 @@
     \end{minipage}
   }
 
+\sys_if_engine_ptex:T
+  {
+    \RequirePackage { newtxtext }
+    \RequirePackage { helvet }
+    \RequirePackage [ deluxe ] {otf}
+    \RequirePackage [ noalphabet ] { pxchfon }
+    \setlightminchofont  [0] { msmincho.ttc }
+    \setmediumminchofont [0] { msmincho.ttc }
+    \setboldminchofont   [0] { msmincho.ttc }
+    \setmediumgothicfont [0] { msgothic.ttc }
+    \setboldgothicfont   [0] { HGRGE.TTC }
+    \setxboldgothicfont  [0] { HGRGE.TTC }
+    \DeclareFontShape { JY1 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
+    \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
+    \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
+    \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+  }
+\sys_if_engine_uptex:T
+  {
+    \RequirePackage { newtxtext }
+    \RequirePackage { helvet }
+    \RequirePackage [ deluxe, uplatex ] {otf}
+    \RequirePackage [ noalphabet ] { pxchfon }
+    \setlightminchofont  [0] { msmincho.ttc }
+    \setmediumminchofont [0] { msmincho.ttc }
+    \setboldminchofont   [0] { msgothic.ttc }
+    \setmediumgothicfont [0] { msgothic.ttc }
+    \setboldgothicfont   [0] { HGRGE.TTC }
+    \setxboldgothicfont  [0] { HGRGE.TTC }
+    \DeclareFontShape { JY2 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
+    \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
+    \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
+    \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+  }
+\sys_if_engine_luatex:T
+  {
+    \RequirePackage { luatexja-fontspec }
+    \setmainfont
+      [
+        Ligatures      = TeX,
+        BoldFont       = Times New Roman Bold,
+        ItalicFont     = Times New Roman Italic,
+        BoldItalicFont = Times New Roman Bold Italic
+      ] { Times New Roman }
+    \setsansfont { Arial }
+    \setmainjfont
+      [
+        Ligatures          = TeX,
+        BoldFont           = msgothic.ttc,
+        ItalicFont         = msmincho.ttc,
+        ItalicFeatures     = { FakeSlant=0.33 },
+        BoldItalicFont     = HGRGE.TTC,
+        BoldItalicFeatures = { FakeSlant=0.33 }
+      ] { msmincho.ttc }
+    \setsansjfont
+      [
+        Ligatures          = TeX,
+        BoldFont           = HGRGE.TTC,
+        ItalicFont         = msgothic.ttc,
+        ItalicFeatures     = { FakeSlant=0.33 },
+        BoldItalicFont     = HGRGE.TTC,
+        BoldItalicFeatures = { FakeSlant=0.33 }
+      ] { msgothic.ttc }
+  }
+
 % フォントサイズの設定（jlreq 内部のコマンドを使用している）
 \RenewDocumentCommand\footnote {}
   { \@setfontsize\footnote{8bp}{\jlreq@baselineskip} }
