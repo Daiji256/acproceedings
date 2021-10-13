@@ -94,15 +94,15 @@
 \str_new:N \l_acr_abstract_str
 \str_new:N \l_acr_keywords_str
 \str_new:N \l_acr_program_str
-\cs_new:Npn \titleJP #1 { \str_set:Nn \l_acr_title_jp_str { #1 } }
-\cs_new:Npn \titleEN #1 { \str_set:Nn \l_acr_title_en_str { #1 } }
-\cs_new:Npn \authorJP #1 { \str_set:Nn \l_acr_author_jp_str { #1 } }
-\cs_new:Npn \authorEN #1 { \str_set:Nn \l_acr_author_en_str { #1 } }
-\cs_new:Npn \major #1 { \str_set:Nn \l_acr_major_str { #1 } }
-\cs_new:Npn \supervisor #1 { \str_set:Nn \l_acr_supervisor_str { #1 } }
-\cs_set:Npn \abstract #1 { \str_set:Nn \l_acr_abstract_str { #1 } }
-\cs_new:Npn \keywords #1 { \str_set:Nn \l_acr_keywords_str { #1 } }
-\cs_new:Npn \program #1 { \str_set:Nn \l_acr_program_str { #1 } }
+\NewDocumentCommand\titleJP    { m }  { \str_set:Nn \l_acr_title_jp_str   { #1 } }
+\NewDocumentCommand\titleEN    { m }  { \str_set:Nn \l_acr_title_en_str   { #1 } }
+\NewDocumentCommand\authorJP   { m }  { \str_set:Nn \l_acr_author_jp_str  { #1 } }
+\NewDocumentCommand\authorEN   { m }  { \str_set:Nn \l_acr_author_en_str  { #1 } }
+\NewDocumentCommand\major      { m }  { \str_set:Nn \l_acr_major_str      { #1 } }
+\NewDocumentCommand\supervisor { m }  { \str_set:Nn \l_acr_supervisor_str { #1 } }
+\RenewDocumentCommand\abstract { +m } { \str_set:Nn \l_acr_abstract_str   { #1 } }
+\NewDocumentCommand\keywords   { m }  { \str_set:Nn \l_acr_keywords_str   { #1 } }
+\NewDocumentCommand\program    { m }  { \str_set:Nn \l_acr_program_str    { #1 } }
 
 % \maketitleの設定（表紙と目次）
 \RenewDocumentCommand\maketitle {} { \twocolumn[\@maketitle] }
