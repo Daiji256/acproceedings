@@ -137,7 +137,7 @@
 % section 等の設定
 \ModifyHeading { section }
   {
-    font={\large\bfseries},
+    font={\large\sffamily\bfseries},
     align=center,
     label_format={\thesection .},
     after_label_space=1\zw,
@@ -147,7 +147,7 @@
   }
 \ModifyHeading { subsection }
   {
-    font={\bfseries},
+    font={\sffamily\bfseries},
     label_format={\thesubsection .},
     after_label_space=1\zw,
     lines=1,
@@ -155,7 +155,7 @@
   }
 \ModifyHeading { subsubsection }
   {
-    font={\bfseries},
+    font={\sffamily\bfseries},
     label_format={\thesubsubsection .},
     after_label_space=1\zw,
     lines=1,
