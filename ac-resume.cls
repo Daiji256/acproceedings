@@ -16,6 +16,11 @@
 % クラスオプション
 \bool_new:N \g_acr_nogutter_bool
 \bool_new:N \g_acr_japanese_bool
+\str_new:N  \g_acr_fonts_str
+\bool_new:N \g_acr_fonts_default_bool
+\bool_new:N \g_acr_fonts_ms_bool
+\bool_new:N \g_acr_fonts_word_bool
+\bool_new:N \g_acr_fonts_no_bool
 
 \clist_new:N \g__acr_options_clist
 \clist_new:N \g__acr_disallowed_options_clist
@@ -50,10 +55,44 @@
     nogutter .bool_gset:N = \g_acr_nogutter_bool,
     nogutter .default:n = true,
     japanese .bool_gset:N = \g_acr_japanese_bool,
-    japanese .default:n = true
+    japanese .default:n = true,
+    fonts    .code:n = { \str_gset:Nn \g_acr_fonts_str { #1 } },
+    fonts    .initial:n = default
   }
 \ProcessKeysOptions { ac-resume / option }
 \PassOptionsToClass { \g__acr_options_clist } { jlreq }
+
+\str_case:VnF \g_acr_fonts_str
+  {
+    { no } { }
+    { default }
+    {
+      \bool_gset:Nn \g_acr_fonts_default_bool { 1 }
+    }
+    { ms }
+    {
+      \bool_gset:Nn \g_acr_fonts_ms_bool { 1 }
+    }
+    { word }
+    {
+      \sys_if_engine_luatex:F
+        {
+          \ClassError { ac-resume } { Unsupported~ fonts~ setting }
+            {
+              This~ is~ a~ LuaTeX-specific~ 'fonts'~ option:~
+              '\g_acr_fonts_str'.
+            }
+        }
+      \bool_gset:Nn \g_acr_fonts_word_bool { 1 }
+    }
+  }
+  {
+    \ClassError { ac-resume } { Unknown~ fonts~ setting }
+      {
+        Invalid~ value~ for~ the~ 'fonts'~ option:~
+        '\g_acr_fonts_str'.
+      }
+  }
 
 % オプションを指定して jlreq を読み込む
 \LoadClass
