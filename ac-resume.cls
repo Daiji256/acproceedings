@@ -113,67 +113,57 @@
 
 \sys_if_engine_ptex:T
   {
-    \RequirePackage { newtxtext }
-    \RequirePackage { helvet }
+    \RequirePackage [ utf8 ] { inputenc }
+    \RequirePackage [ T1 ] { fontenc }
     \RequirePackage [ deluxe ] {otf}
     \RequirePackage [ noalphabet ] { pxchfon }
-    \setlightminchofont  [0] { msmincho.ttc }
-    \setmediumminchofont [0] { msmincho.ttc }
-    \setboldminchofont   [0] { msmincho.ttc }
-    \setmediumgothicfont [0] { msgothic.ttc }
-    \setboldgothicfont   [0] { HGRGE.TTC }
-    \setxboldgothicfont  [0] { HGRGE.TTC }
+    \setmediumminchofont { HaranoAjiMincho-Light.otf }
+    \setboldminchofont   { HaranoAjiMincho-Medium.otf }
+    \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
+    \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
     \DeclareFontShape { JY1 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
     \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
     \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
     \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+    \RequirePackage { newtxtext, newtxmath }
+    \RequirePackage { helvet }
   }
 \sys_if_engine_uptex:T
   {
-    \RequirePackage { newtxtext }
-    \RequirePackage { helvet }
+    \RequirePackage [ T1 ] { fontenc }
     \RequirePackage [ deluxe, uplatex ] {otf}
     \RequirePackage [ noalphabet ] { pxchfon }
-    \setlightminchofont  [0] { msmincho.ttc }
-    \setmediumminchofont [0] { msmincho.ttc }
-    \setboldminchofont   [0] { msgothic.ttc }
-    \setmediumgothicfont [0] { msgothic.ttc }
-    \setboldgothicfont   [0] { HGRGE.TTC }
-    \setxboldgothicfont  [0] { HGRGE.TTC }
+    \setmediumminchofont { HaranoAjiMincho-Light.otf }
+    \setboldminchofont   { HaranoAjiMincho-Medium.otf }
+    \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
+    \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
     \DeclareFontShape { JY2 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
     \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
     \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
     \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+    \RequirePackage { newtxtext, newtxmath }
+    \RequirePackage { helvet }
   }
 \sys_if_engine_luatex:T
   {
+    \RequirePackage [ T1 ] { fontenc }
     \RequirePackage { luatexja-fontspec }
-    \setmainfont
-      [
-        Ligatures      = TeX,
-        BoldFont       = Times New Roman Bold,
-        ItalicFont     = Times New Roman Italic,
-        BoldItalicFont = Times New Roman Bold Italic
-      ] { Times New Roman }
-    \setsansfont { Arial }
     \setmainjfont
       [
-        Ligatures          = TeX,
-        BoldFont           = msgothic.ttc,
-        ItalicFont         = msmincho.ttc,
-        ItalicFeatures     = { FakeSlant=0.33 },
-        BoldItalicFont     = HGRGE.TTC,
-        BoldItalicFeatures = { FakeSlant=0.33 }
-      ] { msmincho.ttc }
+        Ligatures      = TeX,
+        BoldFont       = HaranoAjiMincho-Medium.otf,
+        ItalicFont     = HaranoAjiMincho-Light.otf,
+        BoldItalicFont = HaranoAjiMincho-Medium.otf
+      ] { HaranoAjiMincho-Light.otf }
     \setsansjfont
       [
-        Ligatures          = TeX,
-        BoldFont           = HGRGE.TTC,
-        ItalicFont         = msgothic.ttc,
-        ItalicFeatures     = { FakeSlant=0.33 },
-        BoldItalicFont     = HGRGE.TTC,
-        BoldItalicFeatures = { FakeSlant=0.33 }
-      ] { msgothic.ttc }
+        Ligatures      = TeX,
+        BoldFont       = HaranoAjiGothic-Bold.otf,
+        ItalicFont     = HaranoAjiGothic-Medium.otf,
+        BoldItalicFont = HaranoAjiGothic-Bold.otf
+      ] { HaranoAjiGothic-Medium.otf }
+    \RequirePackage { newtxtext, newtxmath }
+    \RequirePackage { helvet }
   }
 
 % フォントサイズの設定（jlreq 内部のコマンドを使用している）
