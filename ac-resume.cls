@@ -150,59 +150,163 @@
     \end{minipage}
   }
 
-\sys_if_engine_ptex:T
+\bool_if:NT \g_acr_fonts_default_bool
   {
-    \RequirePackage [ utf8 ] { inputenc }
-    \RequirePackage [ T1 ] { fontenc }
-    \RequirePackage [ deluxe ] {otf}
-    \RequirePackage [ noalphabet ] { pxchfon }
-    \setmediumminchofont { HaranoAjiMincho-Light.otf }
-    \setboldminchofont   { HaranoAjiMincho-Medium.otf }
-    \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
-    \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
-    \DeclareFontShape { JY1 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
-    \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
-    \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
-    \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
-    \RequirePackage { newtxtext, newtxmath }
-    \RequirePackage { helvet }
+    \sys_if_engine_ptex:T
+      {
+        \RequirePackage [ utf8 ] { inputenc }
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage [ deluxe ] {otf}
+        \RequirePackage [ noalphabet ] { pxchfon }
+        \setmediumminchofont { HaranoAjiMincho-Light.otf }
+        \setboldminchofont   { HaranoAjiMincho-Medium.otf }
+        \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
+        \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
+        \DeclareFontShape { JY1 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
+        \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
+        \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
+        \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage { helvet }
+      }
+    \sys_if_engine_uptex:T
+      {
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage [ deluxe, uplatex ] {otf}
+        \RequirePackage [ noalphabet ] { pxchfon }
+        \setmediumminchofont { HaranoAjiMincho-Light.otf }
+        \setboldminchofont   { HaranoAjiMincho-Medium.otf }
+        \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
+        \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
+        \DeclareFontShape { JY2 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
+        \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
+        \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
+        \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage { helvet }
+      }
+    \sys_if_engine_luatex:T
+      {
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage { luatexja-fontspec }
+        \setmainjfont
+          [
+            Ligatures      = TeX,
+            BoldFont       = HaranoAjiMincho-Medium.otf,
+            ItalicFont     = HaranoAjiMincho-Light.otf,
+            BoldItalicFont = HaranoAjiMincho-Medium.otf
+          ] { HaranoAjiMincho-Light.otf }
+        \setsansjfont
+          [
+            Ligatures      = TeX,
+            BoldFont       = HaranoAjiGothic-Bold.otf,
+            ItalicFont     = HaranoAjiGothic-Medium.otf,
+            BoldItalicFont = HaranoAjiGothic-Bold.otf
+          ] { HaranoAjiGothic-Medium.otf }
+        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage { helvet }
+      }
   }
-\sys_if_engine_uptex:T
+\bool_if:NT \g_acr_fonts_ms_bool
   {
-    \RequirePackage [ T1 ] { fontenc }
-    \RequirePackage [ deluxe, uplatex ] {otf}
-    \RequirePackage [ noalphabet ] { pxchfon }
-    \setmediumminchofont { HaranoAjiMincho-Light.otf }
-    \setboldminchofont   { HaranoAjiMincho-Medium.otf }
-    \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
-    \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
-    \DeclareFontShape { JY2 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
-    \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
-    \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
-    \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
-    \RequirePackage { newtxtext, newtxmath }
-    \RequirePackage { helvet }
+    \sys_if_engine_ptex:T
+      {
+        \RequirePackage [ utf8 ] { inputenc }
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage [ deluxe ] {otf}
+        \RequirePackage [ noalphabet ] { pxchfon }
+        \setmediumminchofont [ 0 ] { msmincho.ttc }
+        \setboldminchofont   [ 0 ] { HGRGE.TTC }
+        \setmediumgothicfont [ 0 ] { msgothic.ttc }
+        \setboldgothicfont   [ 0 ] { HGRGE.TTC }
+        \DeclareFontShape { JY1 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
+        \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
+        \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
+        \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage { helvet }
+      }
+    \sys_if_engine_uptex:T
+      {
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage [ deluxe, uplatex ] {otf}
+        \RequirePackage [ alphabet ] { pxchfon }
+        \setmediumminchofont [ 0 ] { msmincho.ttc }
+        \setboldminchofont   [ 0 ] { HGRGE.TTC }
+        \setmediumgothicfont [ 0 ] { msgothic.ttc }
+        \setboldgothicfont   [ 0 ] { HGRGE.TTC }
+        \DeclareFontShape { JY2 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
+        \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
+        \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
+        \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
+        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage { helvet }
+      }
+    \sys_if_engine_luatex:T
+      {
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage { luatexja-fontspec }
+        \setmainjfont
+          [
+            Ligatures      = TeX,
+            BoldFont       = HGRGE.TTC:0,
+            ItalicFont     = msmincho.ttc:0,
+            BoldItalicFont = HGRGE.TTC:0
+          ] { msmincho.ttc:0 }
+        \setsansjfont
+          [
+            Ligatures      = TeX,
+            BoldFont       = HGRGE.TTC:0,
+            ItalicFont     = msgothic.ttc:0,
+            BoldItalicFont = HGRGE.TTC:0
+          ] { msgothic.ttc:0 }
+        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage { helvet }
+      }
   }
-\sys_if_engine_luatex:T
+\bool_if:NT \g_acr_fonts_word_bool
   {
-    \RequirePackage [ T1 ] { fontenc }
-    \RequirePackage { luatexja-fontspec }
-    \setmainjfont
-      [
-        Ligatures      = TeX,
-        BoldFont       = HaranoAjiMincho-Medium.otf,
-        ItalicFont     = HaranoAjiMincho-Light.otf,
-        BoldItalicFont = HaranoAjiMincho-Medium.otf
-      ] { HaranoAjiMincho-Light.otf }
-    \setsansjfont
-      [
-        Ligatures      = TeX,
-        BoldFont       = HaranoAjiGothic-Bold.otf,
-        ItalicFont     = HaranoAjiGothic-Medium.otf,
-        BoldItalicFont = HaranoAjiGothic-Bold.otf
-      ] { HaranoAjiGothic-Medium.otf }
-    \RequirePackage { newtxtext, newtxmath }
-    \RequirePackage { helvet }
+    \sys_if_engine_luatex:T
+      {
+        \RequirePackage [ T1 ] { fontenc }
+        \RequirePackage { luatexja-fontspec }
+        \setmainfont
+          [
+            Ligatures      = TeX,
+            BoldFont       = timesbd.ttf,
+            ItalicFont     = timesi.ttf,
+            BoldItalicFont = timesbi.ttf
+          ] { times.ttf }
+        \setsansfont
+          [
+            Ligatures      = TeX,
+            BoldFont       = arialbd.ttf,
+            ItalicFont     = ariali.ttf,
+            BoldItalicFont = arialbi.ttf
+          ] { arial.ttf }
+        \setmainjfont
+          [
+            Ligatures      = TeX,
+            FontIndex      = 0,
+            BoldFont       = HGRGE.TTC,
+            ItalicFont     = msmincho.ttc,
+            BoldItalicFont = HGRGE.TTC
+          ] { msmincho.ttc }
+        \setsansjfont
+          [
+            Ligatures      = TeX,
+            FontIndex      = 0,
+            BoldFont       = HGRGE.TTC,
+            ItalicFont     = msgothic.ttc,
+            BoldItalicFont = HGRGE.TTC
+          ] { msgothic.ttc }
+        \RequirePackage
+          [
+            mathrm=sym, mathup=sym, mathit=sym,
+            mathsf=sym, mathbf=sym, mathtt=sym
+          ] { unicode-math }
+        \setmathfont [ FontIndex=1 ] { cambria.ttc }
+      }
   }
 
 % フォントサイズの設定（jlreq 内部のコマンドを使用している）
