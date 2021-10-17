@@ -189,6 +189,9 @@
     \tl_set:cn { fnum@table } { \tablename\nobreakspace\thetable }
   }
 
+% footnote を MS Word に合わせて数字だけにする．
+\RenewDocumentCommand\thefootnote {} { \arabic{footnote} }
+
 % 参考文献
 \tl_set:Nn \indexname { 参考文献 }
 \cs_set:Npn \@biblabel #1 { #1) }
