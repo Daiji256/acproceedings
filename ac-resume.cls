@@ -107,22 +107,6 @@
     \bool_if:NF \g_acr_nogutter_bool { gutter=2cm }
   ] { jlreq }
 
-% 英語キャプション対応
-\bool_if:NF \g_acr_japanese_bool
-  {
-    \tl_set:Nn \contentsname { Table~ of~ Contents }
-    \tl_set:Nn \indexname { Index }
-    \tl_set:Nn \listfigurename { List~ of~ Figures }
-    \tl_set:Nn \figurename { Figure }
-    \tl_set:Nn \listtablename { List~ of~ Tables }
-    \tl_set:Nn \tablename { Table }
-    \tl_set:cn { fnum@figure } { \figurename\nobreakspace\thefigure }
-    \tl_set:cn { fnum@table } { \tablename\nobreakspace\thetable }
-  }
-
-\tl_set:Nn \indexname { 参考文献 }
-\cs_set:Npn \@biblabel #1 { #1) }
-
 % maketitle の要素の設定
 \NewDocumentCommand\titleJP    { m }  { \cs_new:Nn \g_acr_title_jp:   { #1 } }
 \NewDocumentCommand\titleEN    { m }  { \cs_new:Nn \g_acr_title_en:   { #1 } }
@@ -150,6 +134,91 @@
     \end{minipage}
   }
 
+% section 等の設定
+\ModifyHeading { section }
+  {
+    font={\large\sffamily\bfseries},
+    align=center,
+    label_format={\thesection .},
+    after_label_space=1\zw,
+    lines=1,
+    before_lines=1,
+    after_lines=1
+  }
+\ModifyHeading { subsection }
+  {
+    font={\sffamily\bfseries},
+    label_format={\thesubsection .},
+    after_label_space=1\zw,
+    lines=1,
+    before_lines=1
+  }
+\ModifyHeading { subsubsection }
+  {
+    font={\sffamily\bfseries},
+    label_format={\thesubsubsection .},
+    after_label_space=1\zw,
+    lines=1,
+    before_lines=1
+  }
+% *section が連なった時の処理（expl3 内だと動作しない）
+\ExplSyntaxOff
+\SetBlockHeadingSpaces
+  {
+    {_section{before_lines=1},_subsection{*}}
+    {_subsection{*},_subsubsection{before_lines=0}}
+    {_section{before_lines=1},_subsection{*},_subsubsection{before_lines=0}}
+  }
+\ExplSyntaxOn
+
+% ページ番号の設定
+\NewPageStyle { ac-pagestyle } { nombre=\large\g_acr_program:-\thepage }
+\pagestyle{ac-pagestyle}
+
+% 英語キャプション対応
+\bool_if:NF \g_acr_japanese_bool
+  {
+    \tl_set:Nn \contentsname { Table~ of~ Contents }
+    \tl_set:Nn \indexname { Index }
+    \tl_set:Nn \listfigurename { List~ of~ Figures }
+    \tl_set:Nn \figurename { Figure }
+    \tl_set:Nn \listtablename { List~ of~ Tables }
+    \tl_set:Nn \tablename { Table }
+    \tl_set:cn { fnum@figure } { \figurename\nobreakspace\thefigure }
+    \tl_set:cn { fnum@table } { \tablename\nobreakspace\thetable }
+  }
+
+% 参考文献
+\tl_set:Nn \indexname { 参考文献 }
+\cs_set:Npn \@biblabel #1 { #1) }
+
+\renewenvironment{thebibliography}[1]{%
+  \jlreq@oldfontcommand@enable
+  \section*{\refname}%
+  \@mkboth{\refname}{\refname}%
+  \small
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{#1}}%
+    \labelsep=1\zw
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemindent=0pt
+    \@openbib@code
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty\clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m
+}{%
+  \def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist
+  \jlreq@oldfontcommand@disable
+}
+
+% フォントの設定
 \bool_if:NT \g_acr_fonts_default_bool
   {
     \sys_if_engine_ptex:T
@@ -308,7 +377,6 @@
         \setmathfont [ FontIndex=1 ] { cambria.ttc }
       }
   }
-
 % フォントサイズの設定（jlreq 内部のコマンドを使用している）
 \RenewDocumentCommand\footnote {}
   { \@setfontsize\footnote{8bp}{\jlreq@baselineskip} }
@@ -322,72 +390,3 @@
   { \@setfontsize\LARGE{14bp}{\jlreq@baselineskip} }
 \RenewDocumentCommand\huge {}
   { \@setfontsize\huge{16bp}{\jlreq@baselineskip} }
-
-% section 等の設定
-\ModifyHeading { section }
-  {
-    font={\large\sffamily\bfseries},
-    align=center,
-    label_format={\thesection .},
-    after_label_space=1\zw,
-    lines=1,
-    before_lines=1,
-    after_lines=1
-  }
-\ModifyHeading { subsection }
-  {
-    font={\sffamily\bfseries},
-    label_format={\thesubsection .},
-    after_label_space=1\zw,
-    lines=1,
-    before_lines=1
-  }
-\ModifyHeading { subsubsection }
-  {
-    font={\sffamily\bfseries},
-    label_format={\thesubsubsection .},
-    after_label_space=1\zw,
-    lines=1,
-    before_lines=1
-  }
-
-% *section が連なった時の処理（expl3 内だと動作しない）
-\ExplSyntaxOff
-\SetBlockHeadingSpaces
-  {
-    {_section{before_lines=1},_subsection{*}}
-    {_subsection{*},_subsubsection{before_lines=0}}
-    {_section{before_lines=1},_subsection{*},_subsubsection{before_lines=0}}
-  }
-\ExplSyntaxOn
-
-% ページ番号の設定
-\NewPageStyle { ac-pagestyle } { nombre=\large\g_acr_program:-\thepage }
-\pagestyle{ac-pagestyle}
-
-% 参考文献（フォントサイズを small に変更）
-\renewenvironment{thebibliography}[1]{%
-  \jlreq@oldfontcommand@enable
-  \section*{\refname}%
-  \@mkboth{\refname}{\refname}%
-  \small
-  \list{\@biblabel{\@arabic\c@enumiv}}%
-    {\settowidth\labelwidth{\@biblabel{#1}}%
-    \labelsep=1\zw
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemindent=0pt
-    \@openbib@code
-    \usecounter{enumiv}%
-    \let\p@enumiv\@empty
-    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-  \sloppy
-  \clubpenalty4000
-  \@clubpenalty\clubpenalty
-  \widowpenalty4000%
-  \sfcode`\.\@m
-}{%
-  \def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
-  \endlist
-  \jlreq@oldfontcommand@disable
-}
