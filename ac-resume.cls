@@ -104,7 +104,8 @@
     column_gap=7.5mm,
     line_length=23zw,
     number_of_lines=47,
-    \bool_if:NF \g_acr_nogutter_bool { gutter=2cm }
+    twoside,
+    \bool_if:NF \g_acr_nogutter_bool { gutter=2.5cm }
   ] { jlreq }
 
 % maketitle の要素の設定
