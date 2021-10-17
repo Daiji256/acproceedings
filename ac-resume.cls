@@ -105,7 +105,7 @@
     line_length=23zw,
     number_of_lines=47,
     twoside,
-    \bool_if:NF \g_acr_nogutter_bool { gutter=2.5cm }
+    \bool_if:NF \g_acr_nogutter_bool { gutter=25mm }
   ] { jlreq }
 
 % maketitle の要素の設定
