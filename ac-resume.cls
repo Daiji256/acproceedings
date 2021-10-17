@@ -236,7 +236,8 @@
         \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
         \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
         \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
-        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage [ defaultsups ] { newtxtext }
+        \RequirePackage { newtxmath }
         \RequirePackage { helvet }
       }
     \sys_if_engine_uptex:T
@@ -252,7 +253,8 @@
         \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
         \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
         \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
-        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage [ defaultsups ] { newtxtext }
+        \RequirePackage { newtxmath }
         \RequirePackage { helvet }
       }
     \sys_if_engine_luatex:T
@@ -273,7 +275,8 @@
             ItalicFont     = HaranoAjiGothic-Medium.otf,
             BoldItalicFont = HaranoAjiGothic-Bold.otf
           ] { HaranoAjiGothic-Medium.otf }
-        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage [ defaultsups ] { newtxtext }
+        \RequirePackage { newtxmath }
         \RequirePackage { helvet }
       }
   }
@@ -293,7 +296,8 @@
         \DeclareFontShape { JT1 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
         \DeclareFontShape { JY1 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
         \DeclareFontShape { JT1 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
-        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage [ defaultsups ] { newtxtext }
+        \RequirePackage { newtxmath }
         \RequirePackage { helvet }
       }
     \sys_if_engine_uptex:T
@@ -309,7 +313,8 @@
         \DeclareFontShape { JT2 } { hmc } { b } { n } { <->ssub*hmc/m/n }  {}
         \DeclareFontShape { JY2 } { hgt } { b } { n } { <->ssub*hgt/bx/n } {}
         \DeclareFontShape { JT2 } { hgt } { b } { n } { <->ssub*hgt/m/n }  {}
-        \RequirePackage { newtxtext, newtxmath }
+        \RequirePackage [ defaultsups ] { newtxtext }
+        \RequirePackage { newtxmath }
         \RequirePackage { helvet }
       }
     \sys_if_engine_luatex:T
@@ -330,7 +335,8 @@
             ItalicFont     = msgothic.ttc:0,
             BoldItalicFont = HGRGE.TTC:0
           ] { msgothic.ttc:0 }
-        \RequirePackage { newtxtext, newtxmath }
+          \RequirePackage [ defaultsups ] { newtxtext }
+          \RequirePackage { newtxmath }
         \RequirePackage { helvet }
       }
   }
