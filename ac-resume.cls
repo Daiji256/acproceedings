@@ -228,7 +228,7 @@
         \RequirePackage [ deluxe ] {otf}
         \RequirePackage [ noalphabet ] { pxchfon }
         \setmediumminchofont { HaranoAjiMincho-Light.otf }
-        \setboldminchofont   { HaranoAjiMincho-Medium.otf }
+        \setboldminchofont   { HaranoAjiGothic-Bold.otf }
         \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
         \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
         \DeclareFontShape { JY1 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
@@ -244,7 +244,7 @@
         \RequirePackage [ deluxe, uplatex ] {otf}
         \RequirePackage [ noalphabet ] { pxchfon }
         \setmediumminchofont { HaranoAjiMincho-Light.otf }
-        \setboldminchofont   { HaranoAjiMincho-Medium.otf }
+        \setboldminchofont   { HaranoAjiGothic-Bold.otf }
         \setmediumgothicfont { HaranoAjiGothic-Medium.otf }
         \setboldgothicfont   { HaranoAjiGothic-Bold.otf }
         \DeclareFontShape { JY2 } { hmc } { b } { n } { <->ssub*hmc/bx/n } {}
@@ -261,9 +261,9 @@
         \setmainjfont
           [
             Ligatures      = TeX,
-            BoldFont       = HaranoAjiMincho-Medium.otf,
+            BoldFont       = HaranoAjiGothic-Bold.otf,
             ItalicFont     = HaranoAjiMincho-Light.otf,
-            BoldItalicFont = HaranoAjiMincho-Medium.otf
+            BoldItalicFont = HaranoAjiGothic-Bold.otf
           ] { HaranoAjiMincho-Light.otf }
         \setsansjfont
           [
