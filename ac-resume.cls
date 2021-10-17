@@ -142,7 +142,7 @@
     { \huge\bfseries \g_acr_title_jp: \\[1mm] }
     { \LARGE\bfseries \g_acr_title_en: \\[5mm] }
     { \Large\bfseries \g_acr_author_jp:（\g_acr_author_en:） \\[5mm] }
-    { \normalsize\sffamily \g_acr_major:（\g_acr_supervisor:） \\[7mm] }
+    { \normalsize\bfseries \g_acr_major:（\g_acr_supervisor:） \\[7mm] }
     \begin{minipage}{150mm}
       \setlength{\parindent}{1\zw}
       { \small \g_acr_abstract: \\[5mm]}
