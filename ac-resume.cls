@@ -138,7 +138,7 @@
 % section 等の設定
 \ModifyHeading { section }
   {
-    font={\large\sffamily\bfseries},
+    font={\large\bfseries},
     align=center,
     label_format={\thesection .},
     after_label_space=1\zw,
@@ -148,7 +148,7 @@
   }
 \ModifyHeading { subsection }
   {
-    font={\sffamily\bfseries},
+    font={\bfseries},
     label_format={\thesubsection .},
     after_label_space=1\zw,
     lines=1,
@@ -156,7 +156,7 @@
   }
 \ModifyHeading { subsubsection }
   {
-    font={\sffamily\bfseries},
+    font={\bfseries},
     label_format={\thesubsubsection .},
     after_label_space=1\zw,
     lines=1,
@@ -379,8 +379,8 @@
       }
   }
 % フォントサイズの設定（jlreq 内部のコマンドを使用している）
-\RenewDocumentCommand\footnote {}
-  { \@setfontsize\footnote{8bp}{\jlreq@baselineskip} }
+\RenewDocumentCommand\footnotesize {}
+  { \@setfontsize\footnotesize{8bp}{\jlreq@baselineskip} }
 \RenewDocumentCommand\small {}
   { \@setfontsize\small{9bp}{\jlreq@baselineskip} }
 \RenewDocumentCommand\large {}
