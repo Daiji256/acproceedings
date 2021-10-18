@@ -1,17 +1,19 @@
 % +++
-% latex = "lualatex"
+% latex = "platex"
 % +++
 
-\documentclass[nogutter]{ac-resume}
+\documentclass[
+	fonts=default
+	\ifdefined\kanjiskip , dvipdfmx \fi
+]{ac-resume}
 
+\usepackage{hyperref}
+\ifdefined\kanjiskip \usepackage{pxjahyper}\fi
 \usepackage{amsmath}
-\usepackage{amssymb}
-%\usepackage{bm}
 \usepackage{siunitx}
-\DeclareSIUnit[number-unit-product=]\percent{\char`\%}
 
 \titleJP{専攻科特別研究テーマ名}
-\titleEN{English Title of ACEM Research Theme}
+\titleEN{English Title of Thesis Work Theme}
 \authorJP{専攻 太郎}
 \authorEN{Taro Senkoh}
 \major{〇〇工学専攻}
@@ -19,7 +21,7 @@
 \abstract{
 	This template is prepared
 	for your preparation of manuscript
-	for Thesis Works Papers.
+	for Thesis Works Preprint.
 	It provides instructions: page layout, font style,
 	size and others.
 	You may use it to create your own manuscript
@@ -30,7 +32,7 @@
 	Font should be a 10-point Times-New-Roman.
 	The length should be 200 words or less.
 }
-\keywords{Times, Italic, 10pt}
+\keywords{Serif, $\SI{9}{pt}$}
 \program{XXX-XXX}
 
 \begin{document}
@@ -38,40 +40,46 @@
 
 \section{はじめに}
 
-専攻科特別研究発表会講演予稿の原稿テンプレートです．
-本書式に従い作成して下さい．
-本文は，上下左右に$\SI{20}{mm}$の余白を設けること．
-2段組（間隔$\SI{7.5}{mm}$）とし，
-文字数23，行数47とすること．
-研究テーマ，氏名，専攻（指導教員名）は，
-MSゴシック，ボールド，中央揃えとする．
-英文タイトル・英文氏名はTimes New Romanのボールド，
-中央揃えとする．
+専攻科特別研究発表会講演予稿のテンプレートである．
+本テンプレートの体裁にしたがって予稿を執筆すること．
+
+ページレイアウトは，
+1行の長さを$23$字，1ページを$47$行とする．
+また，のどの余白のを大きさを$\SI{25}{mm}$とし，
+$2$段組（間隔$\SI{7.5}{mm}$）とする．
+
+フォントは通常ウェイト（明朝とSerif），
+\textbf{ボールド（太字ゴシック，Bold Serif）}
+の2つの組み合わせで構成される
+\footnote{基本は，通常ウェイトにMS明朝とTimes New Roman，
+ボールドにHGゴシックEとTimes New Roman Boldとする．
+原ノ味フォントとTimes系フォントで代用しても良い．}．
+タイトル，英文タイトル，著者，専攻（指導教員名），``Keywords:''，
+節，小節，小々節は，ボールドとし，それ以外を通常ウェイトとする．
 
 研究テーマは$\SI{16}{pt}$，英文タイトルは$\SI{14}{pt}$，
-氏名は和英とも$\SI{12}{pt}$，専攻（指導教員名）は$\SI{10}{pt}$とする．
-章タイトルは，MSゴシック，ボールド，$\SI{10.5}{pt}$，
-中央揃えとし，前後を1行空ける．
-節タイトルはMSゴシック，ボールド，$\SI{10}{pt}$，左揃えとし，
-タイトル前を1行空ける．
-本文はMS明朝（英数字はTimes New Roman），$\SI{10}{pt}$で記述する．
-
-図表は，図表内およびキャプションを英語とする．
-ページ番号はページの下部・中央に付ける
-（専攻ごとに形式が異なるので専攻科委員の指示に従うこと）．
+著者は$\SI{12}{pt}$，専攻（指導教員名）は$\SI{10}{pt}$とする．
+節は$\SI{10.5}{pt}$，中央揃えとし，前後を1行空ける．
+小節と小々節は$\SI{10}{pt}$，左揃えとし，前を1行空ける．
+本文は$\SI{10}{pt}$で記述する．
+図表のキャプションは$\SI{9}{pt}$とし，
+図表内およびキャプションを英語とする．
+ページ番号は下部・中央に指定された形式で記載する．
 
 \section{原稿のページ数}
 
 \subsection{専攻科特別研究発表会講演予稿}
 
-1年生は2ページ，2年生は4または6ページにまとめてください．
-ページの増減は認めません．
+1年生は2ページ，2年生は4または6ページとする．
+ページの増減は認めない．
 
 \subsection{専攻科特別研究発表会講演予稿の提出}
 
-提出（1，2年生対象）は，
-PDFファイル（ファイル名は\texttt{xxxxxx.pdf}）とし
-各科専攻科委員に提出してください．
+提出（1，2年生対象）は，PDFファイルとし，
+ファイル名を\texttt{AcMe\mbox{}専攻太郎.pdf}のようにする．
+\texttt{Me}のところは出身学科（\texttt{Me}，\texttt{Ee}，
+\texttt{Ec}，\texttt{Mb}，\texttt{Ci}）とする．
+締め切りを厳守し，各科専攻科委員に提出すること．
 
 \section{原稿の構成}
 
@@ -83,26 +91,25 @@ PDFファイル（ファイル名は\texttt{xxxxxx.pdf}）とし
 	\item 結言，結論，おわりに，まとめ，むすび\\
 	参考文献，引用文献
 \end{enumerate}
-です．章タイトルは，指導教員と相談して適宜変更して構いません．
-引用文献に章番号は付けません．
+とする．節は，指導教員と相談して適宜変更して構わない．
+参考文献には章番号を付けない．
 
 \section{まとめ}
 
-原稿は，本書式で示したフォントや余白の指定を守って作成すること．
-
-原稿ページ数は学年によって異なるので，それぞれの指示をよく確認しておくこと．
-
-締切を厳守すること．
+原稿は，本書式の指定を守って作成すること．
+また，締切を厳守すること．
 
 \begin{thebibliography}{9}
 	\small
 	\bibitem{cite:1}
-	引用文献は，MS明朝（英数字はTimes New Roman），
-	9pt，ぶら下げインデント3mm，番号を付してリストにする．
+	参考文献は，$\SI{9}{pt}$，番号を付けたリストにする．
 	\bibitem{cite:2}
-	Sigurdson, L.~W.,
-	``The structure and control of a turbulent reattaching flow'',
-	Journal of Fluid Mechanics 298, pp.139-165 (1995).
+	Microsoft. ``Word help \& learning''.
+	\url{https://support.microsoft.com/en-us/word/},
+	(accessed 2021-10-17).
+	\bibitem{cite:3}
+	CTAN. ``The Comprehensive {\TeX} Archive Network''.\\
+	\url{https://ctan.org/}, (accessed 2021-10-17).
 \end{thebibliography}
 
 \end{document}
