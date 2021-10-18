@@ -192,6 +192,10 @@
 % footnote を MS Word に合わせて数字だけにする．
 \RenewDocumentCommand\thefootnote {} { \arabic{footnote} }
 
+% 警告 "underfull \vbox (badness XXX)" を減らすためにすごく緩くする
+\def\@textbottom{\vskip 0pt~plus~10bp}%
+\let\@texttop\relax
+
 % 参考文献
 \tl_set:Nn \indexname { 参考文献 }
 \cs_set:Npn \@biblabel #1 { #1) }
