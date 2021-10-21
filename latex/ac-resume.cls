@@ -103,7 +103,8 @@
     twocolumn,
     column_gap=7.5mm,
     line_length=23zw,
-    number_of_lines=47,
+    number_of_lines=46,
+    head_space=20mm,
     twoside,
     \bool_if:NF \g_acr_nogutter_bool { gutter=25mm }
   ] { jlreq }
@@ -119,20 +120,27 @@
 \NewDocumentCommand\keywords   { m }  { \cs_new:Nn \g_acr_keywords:   { #1 } }
 \NewDocumentCommand\program    { m }  { \cs_new:Nn \g_acr_program:    { #1 } }
 
+\usepackage{xcolor}
+\usepackage{transparent}
 % \maketitleの設定（表紙と目次）
 \RenewDocumentCommand\maketitle {} { \twocolumn[\@maketitle] }
 \RenewDocumentCommand\@maketitle {}
   {
+    \transparent{0.5}
+    \color{red}
     \centering
-    { \huge\bfseries \g_acr_title_jp: \\[ 3bp ] }
-    { \LARGE\bfseries \g_acr_title_en: \\[ 12bp ] }
-    { \Large\bfseries \g_acr_author_jp: （\g_acr_author_en:） \\[ 10bp ] }
-    { \normalsize\bfseries \g_acr_major: （\g_acr_supervisor:） \\[ 12bp ] }
-    \begin { minipage } { 150mm }
+    \vspace* { 10bp } % 微調整
+    { \huge\bfseries \g_acr_title_jp: \\[ 1bp ] } % 微調整
+    { \LARGE\bfseries \g_acr_title_en: \\[ 15bp ] }
+    { \Large\bfseries \g_acr_author_jp: （\g_acr_author_en:） \\[ 15bp ] }
+    { \normalsize\bfseries \g_acr_major: （\g_acr_supervisor:） \\[ 15bp ] }
+    \begin { minipage } [ t ] { 150mm }
       \setlength{\parindent}{1\zw}
-      { \small \g_acr_abstract: \\[ 12bp ] }
-      { \small \noindent { \bfseries Keywords:~ } \g_acr_keywords: \\[ 2bp ] }
+      \small
+      { \g_acr_abstract: \\[ 15bp ] }
+      { \noindent { \bfseries Keywords:~ } \g_acr_keywords: }
     \end { minipage }
+    \vspace* { 16bp } % +1 は微調整
   }
 
 % section 等の設定
@@ -141,7 +149,7 @@
     font={\large\bfseries},
     align=center,
     label_format={\thesection .},
-    after_label_space=4bp,
+    after_label_space=3bp,
     lines=1,
     before_lines=1,
     after_lines=1
@@ -150,7 +158,7 @@
   {
     font={\bfseries},
     label_format={\thesubsection .},
-    after_label_space=4bp,
+    after_label_space=3bp,
     lines=1,
     before_lines=1
   }
@@ -158,7 +166,7 @@
   {
     font={\bfseries},
     label_format={\thesubsubsection .},
-    after_label_space=4bp,
+    after_label_space=3bp,
     lines=1,
     before_lines=1
   }
@@ -173,7 +181,7 @@
 \ExplSyntaxOn
 
 % ページ番号の設定
-\NewPageStyle { ac-pagestyle } { nombre=\g_acr_program:-\thepage }
+\NewPageStyle { ac-pagestyle } { nombre=\transparent{0.5}\color{red}\g_acr_program:-\thepage }
 \pagestyle{ac-pagestyle}
 
 % 英語キャプション対応
@@ -391,16 +399,16 @@
         \setmathfont [ FontIndex=1 ] { cambria.ttc }
       }
   }
-% フォントサイズの設定（jlreq 内部のコマンドを使用している）
+% フォントサイズの設定
 \RenewDocumentCommand\footnotesize {}
-  { \@setfontsize\footnotesize{8bp}{\jlreq@baselineskip} }
+  { \fontsize{8bp}{12bp}\selectfont }
 \RenewDocumentCommand\small {}
-  { \@setfontsize\small{9bp}{\jlreq@baselineskip} }
+  { \fontsize{9bp}{13.5bp}\selectfont }
 \RenewDocumentCommand\large {}
-  { \@setfontsize\large{10.5bp}{\jlreq@baselineskip} }
+  { \fontsize{10.5bp}{15.75bp}\selectfont }
 \RenewDocumentCommand\Large {}
-  { \@setfontsize\Large{12bp}{\jlreq@baselineskip} }
+  { \fontsize{12bp}{18bp}\selectfont }
 \RenewDocumentCommand\LARGE {}
-  { \@setfontsize\LARGE{14bp}{\jlreq@baselineskip} }
+  { \fontsize{14bp}{21bp}\selectfont }
 \RenewDocumentCommand\huge {}
-  { \@setfontsize\huge{16bp}{\jlreq@baselineskip} }
+  { \fontsize{16bp}{24bp}\selectfont }
