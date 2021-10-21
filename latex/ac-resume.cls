@@ -124,15 +124,15 @@
 \RenewDocumentCommand\@maketitle {}
   {
     \centering
-    { \huge\bfseries \g_acr_title_jp: \\[1mm] }
-    { \LARGE\bfseries \g_acr_title_en: \\[5mm] }
-    { \Large\bfseries \g_acr_author_jp:（\g_acr_author_en:） \\[5mm] }
-    { \normalsize\bfseries \g_acr_major:（\g_acr_supervisor:） \\[7mm] }
-    \begin{minipage}{150mm}
+    { \huge\bfseries \g_acr_title_jp: \\[ 3bp ] }
+    { \LARGE\bfseries \g_acr_title_en: \\[ 12bp ] }
+    { \Large\bfseries \g_acr_author_jp: （\g_acr_author_en:） \\[ 10bp ] }
+    { \normalsize\bfseries \g_acr_major: （\g_acr_supervisor:） \\[ 12bp ] }
+    \begin { minipage } { 150mm }
       \setlength{\parindent}{1\zw}
-      { \small \g_acr_abstract: \\[5mm]}
-      { \small \noindent { \bfseries Keywords:~ } \g_acr_keywords: \\[2mm] }
-    \end{minipage}
+      { \small \g_acr_abstract: \\[ 12bp ] }
+      { \small \noindent { \bfseries Keywords:~ } \g_acr_keywords: \\[ 2bp ] }
+    \end { minipage }
   }
 
 % section 等の設定
@@ -141,7 +141,7 @@
     font={\large\bfseries},
     align=center,
     label_format={\thesection .},
-    after_label_space=1\zw,
+    after_label_space=4bp,
     lines=1,
     before_lines=1,
     after_lines=1
@@ -150,7 +150,7 @@
   {
     font={\bfseries},
     label_format={\thesubsection .},
-    after_label_space=1\zw,
+    after_label_space=4bp,
     lines=1,
     before_lines=1
   }
@@ -158,7 +158,7 @@
   {
     font={\bfseries},
     label_format={\thesubsubsection .},
-    after_label_space=1\zw,
+    after_label_space=4bp,
     lines=1,
     before_lines=1
   }
@@ -173,7 +173,7 @@
 \ExplSyntaxOn
 
 % ページ番号の設定
-\NewPageStyle { ac-pagestyle } { nombre=\large\g_acr_program:-\thepage }
+\NewPageStyle { ac-pagestyle } { nombre=\g_acr_program:-\thepage }
 \pagestyle{ac-pagestyle}
 
 % 英語キャプション対応

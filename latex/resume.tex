@@ -1,9 +1,9 @@
 % +++
-% latex = "platex"
+% latex = "lualatex"
 % +++
 
 \documentclass[
-	fonts=default
+	fonts=word
 	\ifdefined\kanjiskip , dvipdfmx \fi
 ]{ac-resume}
 
@@ -46,21 +46,22 @@
 ページレイアウトは，
 1行の長さを$23$字，1ページを$47$行とする．
 また，のどの余白のを大きさを$\SI{25}{mm}$とし，
-$2$段組（間隔$\SI{7.5}{mm}$）とする．
+2段組（間隔$\SI{7.5}{mm}$）とする．
 
 フォントは通常ウェイト（明朝とSerif），
 \textbf{ボールド（太字ゴシック，Bold Serif）}
-の2つの組み合わせで構成される
-\footnote{基本は，通常ウェイトにMS明朝とTimes New Roman，
+の2つの組み合わせで構成される．
+基本は，通常ウェイトにMS明朝とTimes New Roman，
 ボールドにHGゴシックEとTimes New Roman Boldとする．
-原ノ味フォントとTimes系フォントで代用しても良い．}．
+原ノ味フォントとTimes系フォントで代用しても良い．
+
 タイトル，英文タイトル，著者，専攻（指導教員名），``Keywords:''，
 節，小節，小々節は，ボールドとし，それ以外を通常ウェイトとする．
 
 研究テーマは$\SI{16}{pt}$，英文タイトルは$\SI{14}{pt}$，
 著者は$\SI{12}{pt}$，専攻（指導教員名）は$\SI{10}{pt}$とする．
-節は$\SI{10.5}{pt}$，中央揃えとし，前後を1行空ける．
-小節と小々節は$\SI{10}{pt}$，左揃えとし，前を1行空ける．
+節は$\SI{10.5}{pt}$，中央揃えとし，前後に空行をとる．
+小節と小々節は$\SI{10}{pt}$，左揃えとし，前に空行をとる．
 本文は$\SI{10}{pt}$で記述する．
 図表のキャプションは$\SI{9}{pt}$とし，
 図表内およびキャプションを英語とする．
@@ -75,7 +76,7 @@ $2$段組（間隔$\SI{7.5}{mm}$）とする．
 
 \subsection{専攻科特別研究発表会講演予稿の提出}
 
-提出（1，2年生対象）は，PDFファイルとし，
+提出は，PDFファイルとし，
 ファイル名を\texttt{AcMe\mbox{}専攻太郎.pdf}のようにする．
 \texttt{Me}のところは出身学科（\texttt{Me}，\texttt{Ee}，
 \texttt{Ec}，\texttt{Mb}，\texttt{Ci}）とする．
@@ -92,7 +93,7 @@ $2$段組（間隔$\SI{7.5}{mm}$）とする．
 	参考文献，引用文献
 \end{enumerate}
 とする．節は，指導教員と相談して適宜変更して構わない．
-参考文献には章番号を付けない．
+参考文献には節番号を付けない．
 
 \section{まとめ}
 
@@ -108,7 +109,7 @@ $2$段組（間隔$\SI{7.5}{mm}$）とする．
 	\url{https://support.microsoft.com/en-us/word/},
 	(accessed 2021-10-17).
 	\bibitem{cite:3}
-	CTAN. ``The Comprehensive {\TeX} Archive Network''.\\
+	CTAN. ``The Comprehensive {\TeX} Archive Network''.
 	\url{https://ctan.org/}, (accessed 2021-10-17).
 \end{thebibliography}
 
