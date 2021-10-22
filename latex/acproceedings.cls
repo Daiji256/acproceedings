@@ -6,7 +6,7 @@
 
 % クラス宣言
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesExplPackage {acproceedings} {2021/10/10} {0.2}
+\ProvidesExplPackage {acproceedings} {2021/10/23} {0.2.1}
   {Document class for the proceedings of Thesis Work}
 
 % (u)pTeX 用パッチ
@@ -202,6 +202,7 @@
 % 参考文献
 \tl_set:Nn \indexname { 参考文献 }
 \cs_set:Npn \@biblabel #1 { #1) }
+\cs_set:Npn \@cite #1 { \textsuperscript { #1) } }
 
 \renewenvironment{thebibliography}[1]{%
   \jlreq@oldfontcommand@enable
