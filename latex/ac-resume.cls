@@ -120,14 +120,10 @@
 \NewDocumentCommand\keywords   { m }  { \cs_new:Nn \g_acr_keywords:   { #1 } }
 \NewDocumentCommand\program    { m }  { \cs_new:Nn \g_acr_program:    { #1 } }
 
-\usepackage{xcolor}
-\usepackage{transparent}
 % \maketitleの設定（表紙と目次）
 \RenewDocumentCommand\maketitle {} { \twocolumn[\@maketitle] }
 \RenewDocumentCommand\@maketitle {}
   {
-    \transparent{0.5}
-    \color{red}
     \centering
     { \huge\bfseries \g_acr_title_jp: \\[ 2bp ] } % 微調整
     { \LARGE\bfseries \g_acr_title_en: \\[ 15bp ] }
@@ -180,7 +176,7 @@
 \ExplSyntaxOn
 
 % ページ番号の設定
-\NewPageStyle { ac-pagestyle } { nombre=\transparent{0.5}\color{red}\g_acr_program:-\thepage }
+\NewPageStyle { ac-pagestyle } { nombre=\g_acr_program:-\thepage }
 \pagestyle{ac-pagestyle}
 
 % 英語キャプション対応

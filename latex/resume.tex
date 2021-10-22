@@ -1,21 +1,16 @@
 % +++
-% latex = "lualatex"
+% latex = "uplatex"
 % +++
 
-\documentclass[
-	fonts=word
-	\ifdefined\kanjiskip , dvipdfmx \fi
-]{ac-resume}
+% pLaTeX，upLaTeX の場合（fonts = default, ms, no）
+\documentclass[fonts=default, dvipdfmx]{ac-resume}
+% luaLaTeX の場合（fonts = default, ms, word, no）
+%\documentclass[fonts=word]{ac-resume}
 
 \usepackage{hyperref}
 \ifdefined\kanjiskip \usepackage{pxjahyper}\fi
 \usepackage{amsmath}
 \usepackage{siunitx}
-
-\usepackage{xcolor}
-\usepackage{transparent}
-\usepackage{pdfoverlay}
-\pdfoverlaySetPDF{../word/resume.pdf}
 
 \titleJP{専攻科特別研究テーマ名}
 \titleEN{English Title of Thesis Work Theme}
@@ -40,8 +35,6 @@
 \program{XXX-XXX}
 
 \begin{document}
-\transparent{0.5}
-\color{red}
 \maketitle
 
 \section{はじめに}
@@ -118,59 +111,5 @@
 	CTAN. ``The Comprehensive {\TeX} Archive Network''.
 	\url{https://ctan.org/}, (accessed 2021-10-17).
 \end{thebibliography}
-
-\newpage
-
-１晴天なり晴天なりABCabc123\par
-２\par
-３\par
-４\par
-５\par
-６\par
-７\par
-８\par
-９\par
-０\par
-１\par
-２\par
-３\par
-４\par
-５\par
-６\par
-７\par
-８\par
-９\par
-０\par
-１\par
-２\par
-３\par
-４\par
-５\par
-６\par
-７\par
-８\par
-９\par
-０\par
-１\par
-２\par
-３\par
-４\par
-５\par
-６\par
-７\par
-８\par
-９\par
-０\par
-１\par
-２\par
-３\par
-４\par
-５\par
-６\par
-７\par
-８\par
-９\par
-０\par
-
 
 \end{document}
