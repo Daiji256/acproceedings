@@ -1,11 +1,13 @@
 % +++
-% latex = "uplatex"
+% latex = "lualatex"
 % +++
 
-% pLaTeX，upLaTeX の場合（fonts = default, ms, no）
-\documentclass[fonts=default, dvipdfmx]{ac-outline}
+% pLaTeX の場合（fonts = default, ms, no）
+%\documentclass[platex, dvipdfmx, fonts=default]{acproceedings}
+% upLaTeX の場合（fonts = default, ms, no）
+%\documentclass[uplatex, dvipdfmx, fonts=default]{acproceedings}
 % luaLaTeX の場合（fonts = default, ms, word, no）
-%\documentclass[fonts=word]{ac-outline}
+\documentclass[lualatex, fonts=word]{acproceedings}
 
 \usepackage{hyperref}
 % pLaTeX，upLaTeX の場合 hyperref のパッチを当てる
@@ -21,8 +23,8 @@
 \supervisor{長岡 高志 教授，悠久 清花 准教授}
 \abstract{
 	This template is prepared for your preparation
-	of manuscript for Thesis Works outline.
-	It is available in MS Word and {\LaTeX}.
+	of manuscript for Thesis Works proceedings.
+	It is available in \mbox{Microsoft Word} and {\LaTeX}.
 	It provides instructions: page layout,
 	font style, font size and others.
 	You may use it to create your own manuscript
