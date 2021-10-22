@@ -1,5 +1,5 @@
-%% 専攻科特別研究発表会講演予稿クラスファイル
-%% Ver.0.1 <2021-10-04>
+%% This is file `ac-outline.cls'.
+%% Copyright 2021 Daiji SUZUKI
 
 % 依存パッケージ
 \RequirePackage{expl3, xparse, l3keys2e}
