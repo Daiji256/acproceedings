@@ -6,28 +6,28 @@
 
 % クラス宣言
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesExplPackage {ac-preprint} {2021/10/04} {0.1}
-  {Document class for the preprint of advanced courses}
+\ProvidesExplPackage {ac-outline} {2021/10/04} {0.1}
+  {Document class for the outline of Thesis Work}
 
 % (u)pTeX 用パッチ
 \sys_if_engine_ptex:T { \RequirePackage { plautopatch } }
 \sys_if_engine_uptex:T { \RequirePackage { plautopatch } }
 
 % クラスオプション
-\bool_new:N \g_acp_nogutter_bool
-\bool_new:N \g_acp_japanese_bool
-\str_new:N  \g_acp_fonts_str
-\bool_new:N \g_acp_fonts_default_bool
-\bool_new:N \g_acp_fonts_ms_bool
-\bool_new:N \g_acp_fonts_word_bool
-\bool_new:N \g_acp_fonts_no_bool
+\bool_new:N \g_aco_nogutter_bool
+\bool_new:N \g_aco_japanese_bool
+\str_new:N  \g_aco_fonts_str
+\bool_new:N \g_aco_fonts_default_bool
+\bool_new:N \g_aco_fonts_ms_bool
+\bool_new:N \g_aco_fonts_word_bool
+\bool_new:N \g_aco_fonts_no_bool
 
-\clist_new:N \g__acp_options_clist
-\clist_new:N \g__acp_disallowed_options_clist
-\seq_new:N \g__acp_disallowed_options_seq
+\clist_new:N \g__aco_options_clist
+\clist_new:N \g__aco_disallowed_options_clist
+\seq_new:N \g__aco_disallowed_options_seq
 
 % jlreq に渡す
-\clist_gset:Nn \g__acp_disallowed_options_clist
+\clist_gset:Nn \g__aco_disallowed_options_clist
   {
     article, report, book, paper, fontsize, jafontsize, jafontscale,
     line_length, number_of_lines, head_space, foot_space, gutter, fore_edge,
@@ -36,61 +36,61 @@
     sidenote_length, use_reverse_pagination, landscape, tate, oneside, twoside,
     oneclumn, twocolumn, titlepage, notitlepage, openright, openany
   }
-\clist_map_inline:Nn \g__acp_disallowed_options_clist
+\clist_map_inline:Nn \g__aco_disallowed_options_clist
   {
-    \seq_gput_right:Nx \g__acp_disallowed_options_seq { \tl_to_str:n { #1 } }
+    \seq_gput_right:Nx \g__aco_disallowed_options_seq { \tl_to_str:n { #1 } }
   }
-\cs_new:Nn \__acp_process_class_option:
+\cs_new:Nn \__aco_process_class_option:
   {
     \cs_if_exist:NF \l_keys_key_str
       { \cs_set_eq:NN \l_keys_key_str \l_keys_key_tl }
-    \seq_if_in:NoTF \g__acp_disallowed_options_seq { \l_keys_key_str }
-      { \msg_warning:nnx { ac-preprint } { disallowed-option } { \l_keys_key_str } }
-      { \clist_gput_right:No \g__acp_options_clist { \CurrentOption } }
+    \seq_if_in:NoTF \g__aco_disallowed_options_seq { \l_keys_key_str }
+      { \msg_warning:nnx { ac-outline } { disallowed-option } { \l_keys_key_str } }
+      { \clist_gput_right:No \g__aco_options_clist { \CurrentOption } }
   }
 
 % オプション実行
-\keys_define:nn { ac-preprint / option }
+\keys_define:nn { ac-outline / option }
   {
-    nogutter .bool_gset:N = \g_acp_nogutter_bool,
+    nogutter .bool_gset:N = \g_aco_nogutter_bool,
     nogutter .default:n = true,
-    japanese .bool_gset:N = \g_acp_japanese_bool,
+    japanese .bool_gset:N = \g_aco_japanese_bool,
     japanese .default:n = true,
-    fonts    .code:n = { \str_gset:Nn \g_acp_fonts_str { #1 } },
+    fonts    .code:n = { \str_gset:Nn \g_aco_fonts_str { #1 } },
     fonts    .initial:n = default
   }
-\ProcessKeysOptions { ac-preprint / option }
-\PassOptionsToClass { \g__acp_options_clist } { jlreq }
+\ProcessKeysOptions { ac-outline / option }
+\PassOptionsToClass { \g__aco_options_clist } { jlreq }
 
-\str_case:VnF \g_acp_fonts_str
+\str_case:VnF \g_aco_fonts_str
   {
     { no } { }
     { default }
     {
-      \bool_gset:Nn \g_acp_fonts_default_bool { 1 }
+      \bool_gset:Nn \g_aco_fonts_default_bool { 1 }
     }
     { ms }
     {
-      \bool_gset:Nn \g_acp_fonts_ms_bool { 1 }
+      \bool_gset:Nn \g_aco_fonts_ms_bool { 1 }
     }
     { word }
     {
       \sys_if_engine_luatex:F
         {
-          \ClassError { ac-preprint } { Unsupported~ fonts~ setting }
+          \ClassError { ac-outline } { Unsupported~ fonts~ setting }
             {
               This~ is~ a~ LuaTeX-specific~ 'fonts'~ option:~
-              '\g_acp_fonts_str'.
+              '\g_aco_fonts_str'.
             }
         }
-      \bool_gset:Nn \g_acp_fonts_word_bool { 1 }
+      \bool_gset:Nn \g_aco_fonts_word_bool { 1 }
     }
   }
   {
-    \ClassError { ac-preprint } { Unknown~ fonts~ setting }
+    \ClassError { ac-outline } { Unknown~ fonts~ setting }
       {
         Invalid~ value~ for~ the~ 'fonts'~ option:~
-        '\g_acp_fonts_str'.
+        '\g_aco_fonts_str'.
       }
   }
 
@@ -106,34 +106,34 @@
     number_of_lines=48,
     head_space=21.1mm, % +1.1mm は微調整
     twoside,
-    \bool_if:NF \g_acp_nogutter_bool { gutter=25mm }
+    \bool_if:NF \g_aco_nogutter_bool { gutter=25mm }
   ] { jlreq }
 
 % maketitle の要素の設定
-\NewDocumentCommand\titleJP    { m }  { \cs_new:Nn \g_acp_title_jp:   { #1 } }
-\NewDocumentCommand\titleEN    { m }  { \cs_new:Nn \g_acp_title_en:   { #1 } }
-\NewDocumentCommand\authorJP   { m }  { \cs_new:Nn \g_acp_author_jp:  { #1 } }
-\NewDocumentCommand\authorEN   { m }  { \cs_new:Nn \g_acp_author_en:  { #1 } }
-\NewDocumentCommand\major      { m }  { \cs_new:Nn \g_acp_major:      { #1 } }
-\NewDocumentCommand\supervisor { m }  { \cs_new:Nn \g_acp_supervisor: { #1 } }
-\RenewDocumentCommand\abstract { +m } { \cs_new:Nn \g_acp_abstract:   { #1 } }
-\NewDocumentCommand\keywords   { m }  { \cs_new:Nn \g_acp_keywords:   { #1 } }
-\NewDocumentCommand\program    { m }  { \cs_new:Nn \g_acp_program:    { #1 } }
+\NewDocumentCommand\titleJP    { m }  { \cs_new:Nn \g_aco_title_jp:   { #1 } }
+\NewDocumentCommand\titleEN    { m }  { \cs_new:Nn \g_aco_title_en:   { #1 } }
+\NewDocumentCommand\authorJP   { m }  { \cs_new:Nn \g_aco_author_jp:  { #1 } }
+\NewDocumentCommand\authorEN   { m }  { \cs_new:Nn \g_aco_author_en:  { #1 } }
+\NewDocumentCommand\major      { m }  { \cs_new:Nn \g_aco_major:      { #1 } }
+\NewDocumentCommand\supervisor { m }  { \cs_new:Nn \g_aco_supervisor: { #1 } }
+\RenewDocumentCommand\abstract { +m } { \cs_new:Nn \g_aco_abstract:   { #1 } }
+\NewDocumentCommand\keywords   { m }  { \cs_new:Nn \g_aco_keywords:   { #1 } }
+\NewDocumentCommand\program    { m }  { \cs_new:Nn \g_aco_program:    { #1 } }
 
 % \maketitleの設定（表紙と目次）
 \RenewDocumentCommand\maketitle {} { \twocolumn[\@maketitle] }
 \RenewDocumentCommand\@maketitle {}
   {
     \centering
-    { \huge\bfseries \g_acp_title_jp: \\[ 2bp ] } % 微調整
-    { \LARGE\bfseries \g_acp_title_en: \\[ 15bp ] }
-    { \Large\bfseries \g_acp_author_jp: （\g_acp_author_en:） \\[ 15bp ] }
-    { \normalsize\bfseries \g_acp_major: （\g_acp_supervisor:） \\[ 15bp ] }
+    { \huge\bfseries \g_aco_title_jp: \\[ 2bp ] } % 微調整
+    { \LARGE\bfseries \g_aco_title_en: \\[ 15bp ] }
+    { \Large\bfseries \g_aco_author_jp: （\g_aco_author_en:） \\[ 15bp ] }
+    { \normalsize\bfseries \g_aco_major: （\g_aco_supervisor:） \\[ 15bp ] }
     \begin { minipage } [ t ] { 150mm }
       \setlength{\parindent}{1\zw}
       \small
-      { \g_acp_abstract: \\[ 15bp ] }
-      { \noindent { \bfseries Keywords:~ } \g_acp_keywords: }
+      { \g_aco_abstract: \\[ 15bp ] }
+      { \noindent { \bfseries Keywords:~ } \g_aco_keywords: }
     \end { minipage }
     \vspace* { 16bp }
   }
@@ -176,11 +176,11 @@
 \ExplSyntaxOn
 
 % ページ番号の設定
-\NewPageStyle { ac-pagestyle } { nombre=\g_acp_program:-\thepage }
+\NewPageStyle { ac-pagestyle } { nombre=\g_aco_program:-\thepage }
 \pagestyle{ac-pagestyle}
 
 % 英語キャプション対応
-\bool_if:NF \g_acp_japanese_bool
+\bool_if:NF \g_aco_japanese_bool
   {
     \tl_set:Nn \contentsname { Table~ of~ Contents }
     \tl_set:Nn \indexname { Index }
@@ -230,7 +230,7 @@
 }
 
 % フォントの設定
-\bool_if:NT \g_acp_fonts_default_bool
+\bool_if:NT \g_aco_fonts_default_bool
   {
     \sys_if_engine_ptex:T
       {
@@ -290,7 +290,7 @@
         \RequirePackage { helvet }
       }
   }
-\bool_if:NT \g_acp_fonts_ms_bool
+\bool_if:NT \g_aco_fonts_ms_bool
   {
     \sys_if_engine_ptex:T
       {
@@ -350,7 +350,7 @@
         \RequirePackage { helvet }
       }
   }
-\bool_if:NT \g_acp_fonts_word_bool
+\bool_if:NT \g_aco_fonts_word_bool
   {
     \sys_if_engine_luatex:T
       {
