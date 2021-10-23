@@ -140,32 +140,33 @@ Windowsを利用している場合は\texttt{ms}か\texttt{word}を
 \subsection{図について}
 
 図の挿入は\textsf{graphicx}パッケージで行う
-（図\ref{fig:sample}）．
+（Figure~\ref{fig:sample}）．
 図のキャプションは図の下に置く．
 
 \begin{figure}[b]
 	\centering
 	\includegraphics[width=3cm]{example-image-a}
-	\caption{図の挿入例}
+	\caption{This is an example of figure insertion.}
 	\label{fig:sample}
 \end{figure}
 
 \subsection{表について}
 
-表組みももちろん利用できる（表\ref{tbl:sample}）．
+表組みももちろん利用できる（Table~\ref{tbl:sample}）．
 表のキャプションは表の上に置く．
 この表では，表内の文字サイズを\texttt{small}に設定している．
 
 \begin{table}[b!]
 	\centering\small
-	\caption{表の挿入例}
+	\caption{This is an example of table insertion.}
 	\label{tbl:sample}
-	\begin{tabular}{cr}
+	\begin{tabular}{ll}
 		\hline\hline
-		日付 & 気温\\\hline
-		10/23 & 14度\\
-		10/24 & 17度\\
-		10/25 & 20度\\\hline
+		\multicolumn{1}{c}{Name} &
+		\multicolumn{1}{c}{RGB} \\\hline
+		Cyan    & $\mathrm{rgb}(0, 255, 255)$ \\
+		Magenta & $\mathrm{rgb}(255, 0, 255)$ \\
+		Yellow  & $\mathrm{rgb}(255, 255, 0)$ \\\hline
 	\end{tabular}
 \end{table}
 
