@@ -6,7 +6,7 @@
 
 % クラス宣言
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesExplPackage {acproceedings} {2021/10/23} {0.2.1}
+\ProvidesExplPackage {acproceedings} {2021/10/23} {0.2.2}
   {Document class for the proceedings of Thesis Work}
 
 % (u)pTeX 用パッチ
@@ -195,12 +195,21 @@
 % footnote を MS Word に合わせて数字だけにする．
 \RenewDocumentCommand\thefootnote {} { \arabic{footnote} }
 
+% キャプションの設定
+\setlength { \abovecaptionskip } { .1\baselineskip }
+\setlength { \belowcaptionskip } { .1\baselineskip }
+\jlreqsetup
+  {
+    caption_label_font={ \small },
+    caption_font={ \small }
+  }
+
 % 警告 "underfull \vbox (badness XXX)" を減らすためにすごく緩くする
 \def\@textbottom{\vskip 0pt~plus~10bp}%
 \let\@texttop\relax
 
 % 参考文献
-\tl_set:Nn \indexname { 参考文献 }
+\tl_set:Nn \refname { 参考文献 }
 \cs_set:Npn \@biblabel #1 { #1) }
 \cs_set:Npn \@cite #1 { \textsuperscript { #1) } }
 
