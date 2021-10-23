@@ -1,0 +1,203 @@
+% +++
+% latex = "uplatex"
+% +++
+
+% pLaTeX の場合（fonts = default, ms, no）
+%\documentclass[platex, dvipdfmx, fonts=default]{acproceedings}
+% upLaTeX の場合（fonts = default, ms, no）
+\documentclass[uplatex, dvipdfmx, fonts=default]{acproceedings}
+% luaLaTeX の場合（fonts = default, ms, word, no）
+%\documentclass[lualatex, fonts=word]{acproceedings}
+
+% ハイパーリンク用
+\usepackage{hyperref}
+% pLaTeX，upLaTeX の場合 hyperref のパッチを当てる
+\ifdefined\kanjiskip \usepackage{pxjahyper}\fi
+% 数式環境用
+\usepackage{amsmath}
+% 図関係
+\usepackage{graphicx, xcolor}
+% ダミーテキスト用（予稿作成には不要）
+\usepackage{bxjalipsum}
+% pLaTeX などのロゴ用（予稿作成には不要）
+\usepackage{bxtexlogo}
+
+\titleJP{{\LaTeX}による予稿作成方法}
+\titleEN{How to Prepare a Proceedings using {\LaTeX}}
+\authorJP{専攻 太郎}
+\authorEN{Taro Senkoh}
+\major{〇〇工学専攻}
+\supervisor{長岡 高志 教授，悠久 清花 准教授}
+\abstract{
+	\textsf{acproceedings} is the {\LaTeX} document class
+	for Thesis Work proceedings.
+	It is based on the \textsf{jlreq} class
+	and supports {\pLaTeX}, {\upLaTeX} and {\LuaLaTeX}.
+	This document is a sample document
+	that also explains how to use it.
+	Please use it as a template as it is.
+	Templates for Microsoft Word are also available.
+}
+\keywords{Thesis Work, proceedings, {\LaTeX}, \textsf{jlreq}}
+\program{XXX-XXX}
+
+\begin{document}
+\maketitle
+
+\section{はじめに}
+
+\textsf{acproceedings}は
+専攻科特別研究予稿用の{\LaTeX}文書クラスである．
+\textsf{jlreq}クラスをベースとしており，
+{\pLaTeX}，{\upLaTeX}，{\LuaLaTeX}をサポートしている．
+ここでは，{\LaTeX}による予稿作成方法を説明する．
+また，ソースファイルの\texttt{acproceedings-sample.tex}は，
+そのまま，テンプレートとして利用できる．
+{\LaTeX}ではなくMicrosoft Word用のテンプレートも用意されているため，
+自分の好みに合わせて選択するとよい．
+
+\section{動作要件}
+
+\textsf{acproceedings}の動作要件は，
+\begin{description}
+	\item[{\TeX}フォーマット] {\LaTeXe}
+	\item[{\TeX}エンジン]     {\pLaTeX}，{\upLaTeX}，{\LuaLaTeX}
+	\item[依存クラス]         \textsf{jlreq}
+	\item[依存パッケージ]     \textsf{expl3}，\textsf{xparse}，\textsf{l3keys2e}
+\end{description}
+のように，なっている．
+{\pLaTeX}，{\upLaTeX}利用時には，
+\textsf{plautopatch}パッケージを自動で読み込む．
+本文書クラスの推奨環境は
+\textbf{\textsf{{\TeX} Live 2018以降}}である．
+
+\section{使い方}
+
+本文書クラスでは，一般的な{\LaTeX}コマンドや環境を利用できる．
+レイアウト設定に影響しないコマンド等でなければ，
+基本的に自由に利用して構わない．
+
+\subsection{クラス宣言}
+
+以下に示すように，使用エンジンとDVIウェアをオプションで指定し，
+\textsf{acproceedings}を宣言すればよい．
+また，\texttt{fonts=...}と指定することで，フォントを設定できる．
+指定できるフォントを以下に示す．
+\begin{description}
+	\item[\texttt{default}]
+	未指定の場合この設定になる．
+	原ノ味フォントとTimes系フォントで構成される．
+	\item[\texttt{ms}]
+	MSフォントとTimes系フォントで構成される．
+	MSフォントとHGフォントが
+	インストールされた環境で動作する．
+	\item[\texttt{word}]
+	{\LuaLaTeX}専用で，
+	MSフォントとTimes New Romanで構成され，
+	Microsoft Wordと限りなく近い見た目になる．
+	MSフォントとHGフォントとTimes New Romanが
+	インストールされた環境で動作する．
+	\item[\texttt{no}]
+	フォントの変更は行われず，
+	\textsf{jlreq}のデフォルトフォントとなる．
+\end{description}
+macOSやLinuxを利用している場合は\texttt{default}を，
+Windowsを利用している場合は\texttt{ms}か\texttt{word}を
+選択するとよい．
+
+他にも，のどを無くす\texttt{nogutter}や
+キャプション等を日本語にする\texttt{japanese}も指定できる．
+基本これらは指定しない．
+
+\subsection{タイトルについて}
+
+本文書クラスではタイトル設定用に，
+以下のコマンドが容易されている．
+このソースファイルを参考に適宜書き換えるとよい．
+\begin{description}
+	\item[\texttt{\textbackslash{}titleJP}]    日本語タイトル
+	\item[\texttt{\textbackslash{}titleEN}]    英語タイトル
+	\item[\texttt{\textbackslash{}authorJP}]   日本語著者名
+	\item[\texttt{\textbackslash{}authorEN}]   英語著者名
+	\item[\texttt{\textbackslash{}major}]      所属専攻
+	\item[\texttt{\textbackslash{}supervisor}] 指導教員
+	\item[\texttt{\textbackslash{}abstract}]   Abstract
+	（{\LaTeX}通常の\texttt{abstract}環境は廃止してある）
+	\item[\texttt{\textbackslash{}keywords}]   キーワード
+	\item[\texttt{\textbackslash{}program}]    プログラム番号（ページ番号用）
+\end{description}
+
+\subsection{数式について}
+
+数式を使う場合は\textsf{amsmath}パッケージを読み込むべきである．
+文章中に$E=mc^2$のように数式を記述したり，別行立てで，
+\begin{align}
+	E = mc^2
+\end{align}
+のように記述できる．
+もちろん$\alpha$，$\leq$，$\Re$のように記号等も使える．
+
+\subsection{図について}
+
+図の挿入は\textsf{graphicx}パッケージで行う
+（図\ref{fig:sample}）．
+図のキャプションは図の下に置く．
+
+\begin{figure}[b]
+	\centering
+	\includegraphics[width=3cm]{example-image-a}
+	\caption{図の挿入例}
+	\label{fig:sample}
+\end{figure}
+
+\subsection{表について}
+
+表組みももちろん利用できる（表\ref{tbl:sample}）．
+表のキャプションは表の上に置く．
+この表では，表内の文字サイズを\texttt{small}に設定している．
+
+\begin{table}[b!]
+	\centering\small
+	\caption{表の挿入例}
+	\label{tbl:sample}
+	\begin{tabular}{cr}
+		\hline\hline
+		日付 & 気温\\\hline
+		10/23 & 14度\\
+		10/24 & 17度\\
+		10/25 & 20度\\\hline
+	\end{tabular}
+\end{table}
+
+\subsection{参考文献について}
+
+\texttt{thebibliography}環境で参考文献を書く．
+デフォルトでは\textbf{参考文献}となる．
+他の文字列に置き換えたい場合，
+\begin{quote}
+	\verb|\renewcommand{\refname}{引用文献}|
+\end{quote}
+のようにすればよい．
+
+\section{ダミーテキスト}
+
+\subsection{いろは}
+
+\jalipsum[1]{iroha}
+
+\subsection{寿限無}
+
+\jalipsum[1]{jugemu}
+
+\subsection{吾輩は猫である}
+
+\jalipsum[1-4]{wagahai}
+
+\begin{thebibliography}{9}
+	\small
+	\bibitem{cite:jlreq}
+	W3C日本語組版タスクフォース．日本語組版の要件．
+	\url{https://www.w3.org/TR/jlreq/}，（参照 2021-10-22）．
+\end{thebibliography}
+
+\end{document}
